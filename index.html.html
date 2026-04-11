@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gather — Make new friends, guaranteed</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,600;0,700;1,700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;scroll-behavior:smooth}
+
+:root{
+  --f:'Instrument Sans',system-ui,sans-serif;
+  --white:#FFFFFF;
+  --off:#F6F5F2;
+  --border:#E6E5E1;
+  --border-mid:#CCCBC6;
+  --ink:#111110;
+  --ink-2:#4A4A46;
+  --ink-3:#97968F;
+  --red:#E84530;
+  --red-dark:#C43820;
+  --nav-h:64px;
+  --r:12px;--r-lg:18px;--r-xl:24px;--pill:999px;
+}
+
+body{font-family:var(--f);background:var(--white);color:var(--ink);overflow-x:hidden;line-height:1.55}
+
+/* ── NAV ──────────────────────────────────────── */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:300;
+  height:var(--nav-h);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 36px;
+  background:rgba(255,255,255,.9);
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  border-bottom:1px solid transparent;
+  transition:border-color .2s;
+}
+.nav.scrolled{border-bottom-color:var(--border)}
+.nav-logo{
+  font-size:19px;font-weight:700;letter-spacing:-.025em;
+  color:var(--ink);cursor:pointer;user-select:none;
+}
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav-host{
+  font-family:var(--f);font-size:14px;font-weight:600;
+  color:var(--ink);background:none;
+  border:1.5px solid var(--border-mid);
+  padding:9px 20px;border-radius:var(--pill);
+  cursor:pointer;transition:all .2s;text-decoration:none;
+  white-space:nowrap;
+}
+.nav-host:hover{background:var(--ink);color:var(--white);border-color:var(--ink)}
+.nav-download{
+  font-family:var(--f);font-size:14px;font-weight:700;
+  color:var(--white);background:var(--red);
+  border:none;padding:10px 22px;border-radius:var(--pill);
+  cursor:pointer;transition:all .2s;text-decoration:none;
+  white-space:nowrap;
+}
+.nav-download:hover{background:var(--red-dark);transform:translateY(-1px)}
+
+/* ── PAGES ────────────────────────────────────── */
+.page{display:none;padding-top:var(--nav-h)}
+.page.active{display:block}
+
+/* ── REVEAL ───────────────────────────────────── */
+.rev{opacity:0;transform:translateY(22px);transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1)}
+.rev.d1{transition-delay:.07s}.rev.d2{transition-delay:.14s}
+.rev.d3{transition-delay:.21s}.rev.d4{transition-delay:.28s}
+.rev.in{opacity:1;transform:none}
+
+/* ── LAYOUT ───────────────────────────────────── */
+.wrap{max-width:1160px;margin:0 auto;padding:0 36px}
+
+/* ── TYPE SYSTEM ──────────────────────────────
+   One typeface. Weights: 400, 600, 700.
+   Italic ONLY for hero headline key phrase.
+   ─────────────────────────────────────────── */
+.eyebrow{
+  display:block;font-size:11px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:var(--red);margin-bottom:14px;
+}
+.eyebrow-muted{color:var(--ink-3)}
+.h1{
+  font-size:clamp(48px,6.5vw,82px);
+  font-weight:700;letter-spacing:-.04em;line-height:1.02;
+}
+.h1 em{font-style:italic;font-weight:700}
+.h2{font-size:clamp(30px,3.8vw,46px);font-weight:700;letter-spacing:-.035em;line-height:1.1}
+.h3{font-size:18px;font-weight:700;letter-spacing:-.02em;line-height:1.3}
+.body-lg{font-size:18px;font-weight:400;line-height:1.7;color:var(--ink-2)}
+.body{font-size:15px;font-weight:400;line-height:1.65;color:var(--ink-2)}
+.small{font-size:13px;color:var(--ink-3);line-height:1.5}
+
+/* ── BUTTONS ──────────────────────────────────── */
+.btn-dark{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--ink);color:var(--white);
+  font-family:var(--f);font-size:15px;font-weight:700;
+  padding:14px 26px;border-radius:var(--pill);
+  text-decoration:none;border:none;cursor:pointer;transition:all .2s;
+}
+.btn-dark:hover{background:#000;transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.18)}
+.btn-red{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--red);color:var(--white);
+  font-family:var(--f);font-size:15px;font-weight:700;
+  padding:14px 26px;border-radius:var(--pill);
+  text-decoration:none;border:none;cursor:pointer;transition:all .2s;
+}
+.btn-red:hover{background:var(--red-dark);transform:translateY(-2px);box-shadow:0 8px 20px rgba(232,69,48,.3)}
+.btn-outline{
+  display:inline-flex;align-items:center;gap:8px;
+  background:transparent;color:var(--ink-2);
+  font-family:var(--f);font-size:15px;font-weight:600;
+  padding:14px 26px;border-radius:var(--pill);
+  border:1.5px solid var(--border-mid);
+  text-decoration:none;cursor:pointer;transition:all .2s;
+}
+.btn-outline:hover{border-color:var(--ink);color:var(--ink)}
+
+/* Store buttons */
+.store-row{display:flex;gap:12px;flex-wrap:wrap}
+.store-btn{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--ink);color:var(--white);
+  padding:12px 20px;border-radius:14px;
+  text-decoration:none;transition:all .2s;
+}
+.store-btn:hover{background:#000;transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,.18)}
+.s-icon{width:20px;height:20px;flex-shrink:0;fill:white}
+.s-col{display:flex;flex-direction:column;line-height:1}
+.s-small{font-size:9px;font-weight:400;opacity:.6;margin-bottom:2px}
+.s-big{font-size:15px;font-weight:700}
+
+/* ════════════════════════════════════════════════
+   GUEST PAGE
+════════════════════════════════════════════════ */
+
+/* ── HERO ─────────────────────────────────────── */
+.hero{
+  display:grid;grid-template-columns:1fr 1fr;
+  min-height:calc(100vh - var(--nav-h));
+  max-width:1160px;margin:0 auto;
+  padding:64px 36px 80px;
+  gap:56px;align-items:center;
+}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--off);border:1px solid var(--border);
+  padding:7px 14px;border-radius:var(--pill);
+  font-size:13px;font-weight:600;color:var(--ink-2);
+  margin-bottom:32px;
+}
+.hero-dot{width:7px;height:7px;border-radius:50%;background:var(--red);flex-shrink:0}
+.hero-h1{margin-bottom:22px}
+.hero-sub{
+  font-size:19px;font-weight:400;line-height:1.65;
+  color:var(--ink-2);max-width:480px;margin-bottom:36px;
+}
+.hero-ctас{margin-bottom:20px}
+.guarantee-line{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:13px;font-weight:600;color:var(--ink-3);
+}
+.guarantee-line svg{width:14px;height:14px;stroke:var(--red);flex-shrink:0}
+.guarantee-line span{color:var(--ink-2)}
+.hero-proof{display:flex;align-items:center;gap:12px;margin-top:24px}
+.av-row{display:flex}
+.av{
+  width:30px;height:30px;border-radius:50%;
+  border:2px solid var(--white);background:var(--off);
+  font-size:10px;font-weight:700;color:var(--ink-2);
+  display:flex;align-items:center;justify-content:center;
+  margin-left:-7px;
+}
+.av:first-child{margin-left:0}
+.proof-txt{font-size:13px;color:var(--ink-3)}
+.proof-txt strong{color:var(--ink-2);font-weight:600;display:block}
+
+/* Hero image */
+.hero-img{
+  border-radius:var(--r-xl);
+  overflow:hidden;
+  position:relative;
+  aspect-ratio:4/5;
+  background:var(--off);
+}
+.hero-mosaic{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  grid-template-rows:1fr 1fr;
+  gap:3px;
+  height:100%;
+}
+.hero-tile{position:relative;overflow:hidden}
+.hero-tile::after{
+  content:attr(data-label);
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:rgba(0,0,0,.25);
+}
+.ht1{background:#E8D8CC}
+.ht2{background:#CDD9CC}
+.ht3{background:#D4CCE0}
+.ht4{background:#CCE0D8}
+.hero-img-card{
+  position:absolute;bottom:16px;left:16px;right:16px;
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(12px);
+  border-radius:var(--r-lg);
+  padding:14px 18px;
+  display:flex;align-items:center;justify-content:space-between;
+  border:1px solid rgba(255,255,255,.8);
+}
+.hic-left .hic-name{font-size:14px;font-weight:700;color:var(--ink)}
+.hic-left .hic-sub{font-size:12px;color:var(--ink-3)}
+.hic-spots{
+  font-size:12px;font-weight:700;color:var(--red);
+  background:rgba(232,69,48,.08);
+  padding:5px 11px;border-radius:var(--pill);
+}
+
+/* ── GATHERINGS ───────────────────────────────── */
+.gather-section{padding:100px 0}
+.section-header{margin-bottom:48px}
+.section-header .h2{margin-bottom:12px}
+
+.scroll-outer{
+  overflow-x:auto;scrollbar-width:none;
+  padding:0 36px 20px;
+  -webkit-overflow-scrolling:touch;
+}
+.scroll-outer::-webkit-scrollbar{display:none}
+.scroll-track{display:flex;gap:16px;width:max-content;padding-bottom:2px}
+
+.g-card{
+  width:288px;flex-shrink:0;
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:var(--r-xl);
+  overflow:hidden;
+  transition:transform .2s cubic-bezier(.22,1,.36,1),box-shadow .2s;
+  cursor:pointer;
+}
+.g-card:hover{transform:translateY(-5px);box-shadow:0 18px 44px rgba(0,0,0,.1)}
+.g-thumb{
+  height:156px;
+  display:flex;flex-direction:column;
+  justify-content:space-between;padding:16px;
+  position:relative;
+}
+.g-thumb::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to bottom,transparent 50%,rgba(0,0,0,.15));
+  pointer-events:none;
+}
+.g-tag{
+  display:inline-block;align-self:flex-start;
+  position:relative;z-index:1;
+  font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+  background:rgba(255,255,255,.88);backdrop-filter:blur(6px);
+  padding:4px 10px;border-radius:var(--pill);color:var(--ink);
+}
+.g-loc{
+  font-size:12px;font-weight:600;color:rgba(255,255,255,.92);
+  display:flex;align-items:center;gap:4px;
+  position:relative;z-index:1;
+}
+.g-body{padding:18px 20px 20px}
+.g-name{font-size:17px;font-weight:700;letter-spacing:-.02em;margin-bottom:8px;line-height:1.25}
+.g-desc{
+  font-size:13px;color:var(--ink-2);line-height:1.6;margin-bottom:16px;
+  display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;
+}
+.g-foot{
+  display:flex;justify-content:space-between;align-items:center;
+  padding-top:13px;border-top:1px solid var(--border);
+}
+.g-spots{font-size:12px;color:var(--ink-3)}
+.g-price{font-size:14px;font-weight:700;color:var(--red)}
+
+.c1{background:linear-gradient(140deg,#F0C8C0,#E09080)}
+.c2{background:linear-gradient(140deg,#C4D8C4,#88B890)}
+.c3{background:linear-gradient(140deg,#D8CCEC,#A890D8)}
+.c4{background:linear-gradient(140deg,#C0D8EC,#78ACCC)}
+.c5{background:linear-gradient(140deg,#F0D8A8,#E0A850)}
+.c6{background:linear-gradient(140deg,#C8C0EC,#8870C8)}
+.c7{background:linear-gradient(140deg,#4A1080,#9840F8)}
+
+.cards-footer{
+  padding:20px 36px 0;
+  display:flex;align-items:center;gap:20px;flex-wrap:wrap;
+}
+.txt-note{font-size:14px;color:var(--ink-3)}
+.link-underline{
+  font-size:14px;font-weight:700;color:var(--ink);
+  text-decoration:none;
+  border-bottom:1.5px solid var(--ink);
+  padding-bottom:1px;transition:color .2s,border-color .2s;
+}
+.link-underline:hover{color:var(--red);border-color:var(--red)}
+
+/* ── TESTIMONIALS ─────────────────────────────── */
+.testi-section{padding:100px 0;background:var(--off)}
+.testi-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:16px;margin-top:48px;
+}
+.t-card{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:var(--r-xl);padding:32px;
+  display:flex;flex-direction:column;
+}
+.t-card.dark{background:var(--ink);border-color:transparent}
+.t-q{
+  font-size:17px;font-style:italic;font-weight:400;
+  line-height:1.65;color:var(--ink);flex:1;margin-bottom:22px;
+}
+.t-card.dark .t-q{color:rgba(255,255,255,.88)}
+.t-auth{
+  display:flex;align-items:center;gap:10px;
+  padding-top:18px;border-top:1px solid var(--border);
+}
+.t-card.dark .t-auth{border-top-color:rgba(255,255,255,.1)}
+.t-av{
+  width:36px;height:36px;border-radius:50%;flex-shrink:0;
+  background:var(--off);
+  font-size:11px;font-weight:700;color:var(--ink-2);
+  display:flex;align-items:center;justify-content:center;
+}
+.t-card.dark .t-av{background:rgba(255,255,255,.1);color:rgba(255,255,255,.6)}
+.t-name{font-size:14px;font-weight:700;color:var(--ink)}
+.t-loc{font-size:12px;color:var(--ink-3)}
+.t-card.dark .t-name{color:var(--white)}
+.t-card.dark .t-loc{color:rgba(255,255,255,.38)}
+
+/* ── HOST CTA BAND ────────────────────────────── */
+.host-band{padding:80px 36px}
+.hband-card{
+  max-width:1160px;margin:0 auto;
+  background:var(--ink);border-radius:var(--r-xl);
+  padding:72px;
+  display:grid;grid-template-columns:1fr 308px;
+  gap:80px;align-items:center;
+  position:relative;overflow:hidden;
+}
+.hband-card::before{
+  content:'';position:absolute;
+  top:-100px;right:-80px;width:400px;height:400px;border-radius:50%;
+  background:radial-gradient(ellipse,rgba(232,69,48,.14) 0%,transparent 65%);
+  pointer-events:none;
+}
+.hb-eyebrow{color:rgba(255,255,255,.28)}
+.hb-h2{color:var(--white);margin-bottom:18px}
+.hb-body{font-size:17px;color:rgba(255,255,255,.52);line-height:1.65;margin-bottom:8px}
+.hb-fine{font-size:13px;color:rgba(255,255,255,.26);margin-bottom:36px}
+.earn-panel{
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
+  border-radius:var(--r-lg);padding:30px;
+  position:relative;z-index:1;
+}
+.ep-lbl{
+  font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(255,255,255,.28);margin-bottom:18px;
+}
+.ep-row{
+  display:flex;justify-content:space-between;
+  padding:9px 0;border-bottom:1px solid rgba(255,255,255,.07);
+}
+.ep-row:last-of-type{border-bottom:none}
+.er-l{font-size:13px;color:rgba(255,255,255,.38)}
+.er-v{font-size:13px;font-weight:700;color:rgba(255,255,255,.75)}
+.ep-total{
+  margin-top:16px;padding:14px 16px;
+  background:rgba(232,69,48,.15);border:1px solid rgba(232,69,48,.25);
+  border-radius:10px;
+  display:flex;justify-content:space-between;align-items:center;
+}
+.et-l{font-size:12px;color:rgba(255,255,255,.38)}
+.et-v{font-size:34px;font-weight:700;color:var(--white);letter-spacing:-.04em}
+.btn-white{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--white);color:var(--ink);
+  font-family:var(--f);font-size:15px;font-weight:700;
+  padding:14px 26px;border-radius:var(--pill);
+  text-decoration:none;border:none;cursor:pointer;transition:all .2s;
+}
+.btn-white:hover{background:var(--off);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.25)}
+
+/* ── FOOTER CTA ───────────────────────────────── */
+.fcta{padding:120px 36px;text-align:center}
+.fcta .h2{margin-bottom:14px}
+.fcta .body-lg{margin:0 auto 44px;max-width:400px}
+.fcta .store-row{justify-content:center}
+
+/* ── FOOTER ───────────────────────────────────── */
+footer{
+  background:var(--off);border-top:1px solid var(--border);
+  padding:36px;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:16px;
+}
+.f-logo{font-size:17px;font-weight:700;letter-spacing:-.025em}
+.f-links{display:flex;gap:20px}
+.f-links a{font-size:13px;color:var(--ink-3);text-decoration:none;transition:color .2s}
+.f-links a:hover{color:var(--ink)}
+.f-copy{font-size:12px;color:var(--ink-3)}
+
+/* ════════════════════════════════════════════════
+   HOST PAGE
+════════════════════════════════════════════════ */
+.host-hero{
+  display:grid;grid-template-columns:1fr 368px;
+  gap:80px;align-items:center;
+  max-width:1160px;margin:0 auto;
+  padding:80px 36px 96px;
+}
+.host-h1{margin-bottom:22px}
+.host-sub{
+  font-size:18px;font-weight:400;line-height:1.65;
+  color:var(--ink-2);max-width:500px;margin-bottom:36px;
+}
+.host-earn-card{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:var(--r-xl);padding:34px;
+  box-shadow:0 4px 28px rgba(0,0,0,.06);
+}
+.hec-lbl{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:22px}
+.hec-row{display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--border)}
+.hec-row:last-of-type{border-bottom:none}
+.hl{font-size:13px;color:var(--ink-3)}
+.hv{font-size:14px;font-weight:700;color:var(--ink)}
+.hec-total{
+  margin-top:16px;padding:15px 18px;
+  background:var(--off);border-radius:12px;
+  display:flex;justify-content:space-between;align-items:center;
+}
+.ht-l{font-size:13px;font-weight:600;color:var(--ink-2)}
+.ht-v{font-size:36px;font-weight:700;color:var(--ink);letter-spacing:-.04em}
+.hec-note{font-size:12px;color:var(--ink-3);margin-top:12px;line-height:1.5}
+
+/* What you're building */
+.build-section{padding:96px 0;background:var(--off)}
+.build-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:80px;align-items:start;
+}
+.build-body{font-size:17px;color:var(--ink-2);line-height:1.7;margin-bottom:20px}
+.pillars{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:14px;margin-top:48px;
+}
+.pillar{padding:22px;background:var(--white);border-radius:var(--r-lg);border:1px solid var(--border)}
+.p-ey{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--red);margin-bottom:7px}
+.p-h{font-size:16px;font-weight:700;letter-spacing:-.01em;margin-bottom:6px}
+.p-b{font-size:13px;color:var(--ink-2);line-height:1.6}
+
+/* Host examples */
+.hex-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
+.hex-card{
+  border:1px solid var(--border);border-radius:var(--r-xl);overflow:hidden;
+  transition:transform .2s,box-shadow .2s;background:var(--white);
+}
+.hex-card:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,.08)}
+.hex-thumb{height:92px}
+.hex-body{padding:20px}
+.hex-name{font-size:16px;font-weight:700;letter-spacing:-.02em;margin-bottom:3px}
+.hex-host{font-size:12px;color:var(--ink-3);margin-bottom:10px}
+.hex-desc{font-size:13px;color:var(--ink-2);line-height:1.6}
+.hex-stat{
+  display:inline-flex;align-items:center;
+  margin-top:12px;background:rgba(232,69,48,.07);
+  padding:4px 10px;border-radius:var(--pill);
+  font-size:12px;font-weight:700;color:var(--red);
+}
+
+/* Steps */
+.steps{max-width:640px;margin:48px auto 0}
+.step{
+  display:grid;grid-template-columns:58px 1fr;
+  gap:18px;padding:26px 0;border-bottom:1px solid var(--border);
+}
+.step:last-child{border-bottom:none}
+.s-num{
+  font-size:42px;font-weight:700;color:var(--border-mid);
+  line-height:1;text-align:center;padding-top:3px;letter-spacing:-.04em;
+}
+.s-h{font-size:17px;font-weight:700;letter-spacing:-.02em;margin-bottom:6px}
+.s-p{font-size:14px;color:var(--ink-2);line-height:1.65}
+
+/* Support grid */
+.sup-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:48px}
+.sup-card{
+  padding:24px;border:1px solid var(--border);border-radius:var(--r-lg);
+  transition:border-color .2s,transform .2s;background:var(--white);
+}
+.sup-card:hover{border-color:var(--border-mid);transform:translateY(-2px)}
+.sup-icon{
+  width:38px;height:38px;border-radius:10px;background:var(--off);
+  display:flex;align-items:center;justify-content:center;margin-bottom:13px;
+}
+.sup-icon svg{width:16px;height:16px;stroke:var(--ink-2);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.sup-h{font-size:15px;font-weight:700;letter-spacing:-.01em;margin-bottom:6px}
+.sup-p{font-size:13px;color:var(--ink-2);line-height:1.65}
+
+/* Host testimonials */
+.htesti-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:48px}
+.ht-card{
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);
+  border-radius:var(--r-xl);padding:36px;
+}
+.ht-q{
+  font-size:18px;font-weight:400;font-style:italic;
+  line-height:1.65;color:rgba(255,255,255,.85);margin-bottom:22px;
+}
+.ht-auth{display:flex;align-items:center;gap:10px;padding-top:18px;border-top:1px solid rgba(255,255,255,.08)}
+.ht-av{
+  width:36px;height:36px;border-radius:50%;flex-shrink:0;
+  background:rgba(255,255,255,.1);
+  font-size:11px;font-weight:700;color:rgba(255,255,255,.5);
+  display:flex;align-items:center;justify-content:center;
+}
+.ht-name{font-size:14px;font-weight:700;color:rgba(255,255,255,.85)}
+.ht-role{font-size:12px;color:rgba(255,255,255,.35)}
+
+/* FAQ */
+.faq{max-width:640px;margin:48px auto 0}
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-q{
+  width:100%;background:none;border:none;cursor:pointer;
+  display:flex;justify-content:space-between;align-items:center;gap:20px;
+  padding:20px 0;text-align:left;
+  font-family:var(--f);font-size:17px;font-weight:700;
+  letter-spacing:-.015em;color:var(--ink);
+}
+.faq-ico{
+  width:26px;height:26px;flex-shrink:0;border-radius:50%;
+  background:var(--off);display:flex;align-items:center;justify-content:center;
+  transition:all .2s;
+}
+.faq-ico svg{width:11px;height:11px;stroke:var(--ink-2);transition:transform .2s;fill:none;stroke-width:2.5;stroke-linecap:round}
+.faq-item.open .faq-ico{background:var(--red)}
+.faq-item.open .faq-ico svg{stroke:white;transform:rotate(45deg)}
+.faq-a{
+  max-height:0;overflow:hidden;
+  font-size:14px;color:var(--ink-2);line-height:1.7;
+  transition:max-height .3s cubic-bezier(.4,0,.2,1),padding .2s;
+}
+.faq-item.open .faq-a{max-height:300px;padding-bottom:20px}
+
+/* Host footer CTA */
+.hfcta{padding:120px 36px;text-align:center;background:var(--off)}
+.hfcta .h2{margin-bottom:14px}
+.hfcta .body-lg{margin:0 auto 44px;max-width:420px}
+.hfcta-btns{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+
+/* ── SECTION SPACING ──────────────────────────── */
+.section{padding:96px 0}
+.section-dark{background:var(--ink)}
+.section-off{background:var(--off)}
+
+/* ── RESPONSIVE ───────────────────────────────── */
+@media(max-width:960px){
+  .hero{grid-template-columns:1fr;gap:40px;min-height:unset;padding:52px 24px 64px}
+  .hero-img{max-width:500px;aspect-ratio:16/9}
+  .host-hero{grid-template-columns:1fr;gap:40px;padding:56px 24px 72px}
+  .host-earn-card{max-width:400px}
+  .hband-card{grid-template-columns:1fr;padding:48px 36px;gap:40px}
+  .build-grid{grid-template-columns:1fr;gap:48px}
+  .hex-grid{grid-template-columns:1fr 1fr}
+  .sup-grid{grid-template-columns:1fr 1fr}
+  .htesti-grid{grid-template-columns:1fr}
+  .testi-grid{grid-template-columns:1fr}
+  .pillars{grid-template-columns:1fr 1fr !important}
+}
+@media(max-width:680px){
+  .wrap,.hero,.host-hero,.host-band,.fcta,.hfcta{padding-left:20px;padding-right:20px}
+  .scroll-outer,.cards-footer{padding-left:20px;padding-right:20px}
+  .nav{padding:0 20px}
+  .hex-grid,.sup-grid{grid-template-columns:1fr}
+  .hfcta-btns{flex-direction:column;align-items:center}
+  .nav-download span{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="main-nav">
+  <span class="nav-logo" onclick="goPage('guest')">Gather</span>
+  <div class="nav-right">
+    <a class="nav-host" onclick="goPage('host')">For hosts</a>
+    <a href="https://apps.apple.com/us/app/gather/id6754841480" class="nav-download">Download the app</a>
+  </div>
+</nav>
+
+<!-- ════════════════════════════════════════════
+     GUEST PAGE
+════════════════════════════════════════════ -->
+<div class="page active" id="page-guest">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-text">
+      <div class="hero-tag rev">
+        <span class="hero-dot"></span>
+        Now in London &amp; New York
+      </div>
+      <h1 class="h1 hero-h1 rev d1">Make new friends,<br><em>guaranteed.</em></h1>
+      <p class="hero-sub rev d2">Find a gathering built for someone exactly like you — and meet the same small group every week, until strangers become real friends.</p>
+      <div class="store-row hero-ctас rev d3">
+        <a href="https://apps.apple.com/us/app/gather/id6754841480" class="store-btn">
+          <svg class="s-icon" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          <div class="s-col"><span class="s-small">Download on the</span><span class="s-big">App Store</span></div>
+        </a>
+        <a href="https://play.google.com/store/apps/details?id=com.wefindyourtribe.gather" class="store-btn">
+          <svg class="s-icon" viewBox="0 0 24 24"><path d="M3 20.5v-17c0-.83.94-1.3 1.6-.8l14 8.5c.6.37.6 1.23 0 1.6l-14 8.5c-.66.5-1.6.03-1.6-.8z"/></svg>
+          <div class="s-col"><span class="s-small">Get it on</span><span class="s-big">Google Play</span></div>
+        </a>
+      </div>
+      <div class="guarantee-line rev d4">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <span>Attend 5 sessions and don't make a friend? <span style="color:var(--ink-2);font-weight:600">Your next gathering is on us.</span></span>
+      </div>
+      <div class="hero-proof rev d4">
+        <div class="av-row">
+          <div class="av">AK</div><div class="av">MR</div>
+          <div class="av">JL</div><div class="av">ST</div><div class="av">+</div>
+        </div>
+        <div class="proof-txt">
+          <strong>1,300+ members</strong>
+          London &amp; New York · growing every week
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-img rev d2">
+      <div class="hero-mosaic">
+        <div class="hero-tile ht1" data-label="Photo"></div>
+        <div class="hero-tile ht2" data-label="Photo"></div>
+        <div class="hero-tile ht3" data-label="Photo"></div>
+        <div class="hero-tile ht4" data-label="Photo"></div>
+      </div>
+      <div class="hero-img-card">
+        <div class="hic-left">
+          <div class="hic-name">Gay Men's Cuddle Puddle</div>
+          <div class="hic-sub">New York · Sundays</div>
+        </div>
+        <span class="hic-spots">3 spots left</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- GATHERINGS -->
+  <section class="gather-section">
+    <div class="wrap">
+      <div class="section-header rev">
+        <span class="eyebrow">Find your gathering</span>
+        <h2 class="h2">A gathering for everyone.</h2>
+        <p class="body-lg" style="max-width:480px;margin-top:10px">Every gathering meets weekly — same group, same place, until strangers become real friends.</p>
+      </div>
+    </div>
+
+    <div class="scroll-outer">
+      <div class="scroll-track">
+
+        <div class="g-card">
+          <div class="g-thumb c1">
+            <span class="g-tag">Gay Men</span>
+            <span class="g-loc"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>New York · Sundays</span>
+          </div>
+          <div class="g-body">
+            <div class="g-name">Gay Men's Cuddle Puddle</div>
+            <div class="g-desc">For gay men who want non-sexual physical closeness in a consent-forward space. Mattresses, an opening check-in, boundaries respected. Come alone. Leave feeling held.</div>
+            <div class="g-foot"><span class="g-spots">3 spots left</span><span class="g-price">$20–30 / week</span></div>
+          </div>
+        </div>
+
+        <div class="g-card">
+          <div class="g-thumb c2">
+            <span class="g-tag">Embodied &amp; Conscious</span>
+            <span class="g-loc"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>London · Fridays</span>
+          </div>
+          <div class="g-body">
+            <div class="g-name">Embodied Contact Improv &amp; Dinner</div>
+            <div class="g-desc">For people who live consciously in their bodies — curious, present, open. An hour of contact improv followed by dinner where the real connections form. No experience required. Presence is.</div>
+            <div class="g-foot"><span class="g-spots">4 spots left</span><span class="g-price">£15 / week</span></div>
+          </div>
+        </div>
+
+        <div class="g-card">
+          <div class="g-thumb c3">
+            <span class="g-tag">Pregnancy Journey</span>
+            <span class="g-loc"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>New York · Wednesdays</span>
+          </div>
+          <div class="g-body">
+            <div class="g-name">The Pregnancy Circle</div>
+            <div class="g-desc">For women navigating their pregnancy journey — trying to conceive, expecting, or newly postpartum. Honest conversation, no performances. Just women in the same season of life who actually get it.</div>
+            <div class="g-foot"><span class="g-spots">5 spots left</span><span class="g-price">$15 / week</span></div>
+          </div>
+        </div>
+
+        <div class="g-card">
+          <div class="g-thumb c4">
+            <span class="g-tag">Queer Parents</span>
+            <span class="g-loc"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>New York · Saturdays</span>
+          </div>
+          <div class="g-body">
+            <div class="g-name">Queer Dads</div>
+            <div class="g-desc">For gay and queer fathers raising young children. The park visits, the school stuff, the particular joy and particular exhaustion of it. A weekly gathering for dads who want other dads who understand.</div>
+            <div class="g-foot"><span class="g-spots">4 spots left</span><span class="g-price">Free</span></div>
+          </div>
+        </div>
+
+        <div class="g-card">
+          <div class="g-thumb c5">
+            <span class="g-tag">Sober &amp; Queer</span>
+            <span class="g-loc"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>New York · Thursdays</span>
+          </div>
+          <div class="g-body">
+            <div class="g-name">Sober &amp; Queer</div>
+            <div class="g-desc">For queer people on their sobriety journey who are tired of a social scene almost entirely built around drinking. Your identity and your sobriety are both baseline understood here. No explanations required.</div>
+            <div class="g-foot"><span class="g-spots">6 spots left</span><span class="g-price">$10 / week</span></div>
+          </div>
+        </div>
+
+        <div class="g-card">
+          <div class="g-thumb c6">
+            <span class="g-tag">Non-Binary · New Arrivals</span>
+            <span class="g-loc"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>New York · Sundays</span>
+          </div>
+          <div class="g-body">
+            <div class="g-name">New to the City</div>
+            <div class="g-desc">For non-binary people who've just moved somewhere new and need to find their people. A weekly gathering where nobody needs to explain themselves — you're here for one reason: to actually make friends.</div>
+            <div class="g-foot"><span class="g-spots">5 spots left</span><span class="g-price">$10 / week</span></div>
+          </div>
+        </div>
+
+        <div class="g-card">
+          <div class="g-thumb c7">
+            <span class="g-tag">Ex-Ravers</span>
+            <span class="g-loc"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>London · Saturdays</span>
+          </div>
+          <div class="g-body">
+            <div class="g-name">Ex-Ravers</div>
+            <div class="g-desc">For people whose whole social life used to be the rave scene — and who've outgrown it, or are in the process of outgrowing it, and are figuring out what comes next. Still up for a good time. Just with more depth.</div>
+            <div class="g-foot"><span class="g-spots">4 spots left</span><span class="g-price">$12 / week</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="cards-footer rev">
+      <span class="txt-note">Hundreds of gatherings across London and New York — and new ones every week.</span>
+      <a href="https://apps.apple.com/us/app/gather/id6754841480" class="link-underline">Browse all gatherings →</a>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section section-off">
+    <div class="wrap">
+      <div class="section-header rev">
+        <span class="eyebrow">What members say</span>
+        <h2 class="h2">In their own words.</h2>
+      </div>
+      <div class="testi-grid">
+        <div class="t-card dark rev d1">
+          <p class="t-q">"The fact that it's the same people every week is everything. You stop performing. You stop trying to make a good impression. You just actually get to know each other. That's what was missing."</p>
+          <div class="t-auth">
+            <div class="t-av">JH</div>
+            <div><div class="t-name">Jamie H., 31</div><div class="t-loc">London</div></div>
+          </div>
+        </div>
+        <div class="t-card rev d2">
+          <p class="t-q">"I moved to New York without knowing a single person. I'd been to so many events where I left feeling lonelier than when I arrived. By week six I had five people I genuinely wanted to keep seeing."</p>
+          <div class="t-auth">
+            <div class="t-av">MK</div>
+            <div><div class="t-name">Marcus K., 29</div><div class="t-loc">New York City</div></div>
+          </div>
+        </div>
+        <div class="t-card rev d3">
+          <p class="t-q">"I've tried every version of meeting people — apps, events, coworking spaces. The difference here is you don't have to work at it. The format does the work. You just have to show up."</p>
+          <div class="t-auth">
+            <div class="t-av">SR</div>
+            <div><div class="t-name">Sofia R., 34</div><div class="t-loc">London</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOST CTA BAND -->
+  <section class="host-band">
+    <div class="hband-card rev">
+      <div>
+        <span class="eyebrow hb-eyebrow">For hosts</span>
+        <h2 class="h2 hb-h2">Turn something you love doing into a weekly gathering — and get paid.</h2>
+        <p class="hb-body">Gather helps you build a small, recurring gathering around something you genuinely care about. You keep 100% of ticket sales.</p>
+        <p class="hb-fine">$15/month host subscription. Nothing else.</p>
+        <button class="btn-white" onclick="goPage('host')">
+          Learn how hosting works
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+      <div class="earn-panel">
+        <div class="ep-lbl">Example monthly earnings</div>
+        <div class="ep-row"><span class="er-l">Attendees</span><span class="er-v">8 people</span></div>
+        <div class="ep-row"><span class="er-l">Ticket price</span><span class="er-v">$20 / week</span></div>
+        <div class="ep-row"><span class="er-l">Sessions / month</span><span class="er-v">4</span></div>
+        <div class="ep-row"><span class="er-l">Gather subscription</span><span class="er-v" style="color:rgba(255,255,255,.28)">−$15</span></div>
+        <div class="ep-total">
+          <span class="et-l">You keep</span>
+          <span class="et-v">$625</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER CTA -->
+  <section class="fcta">
+    <div class="wrap">
+      <span class="eyebrow rev" style="justify-content:center;display:block">Download the app</span>
+      <h2 class="h2 rev d1" style="margin-bottom:14px">Stop scrolling.<br>Start showing up.</h2>
+      <p class="body-lg rev d2">Find a weekly gathering near you.</p>
+      <div class="store-row rev d3" style="justify-content:center;margin-top:36px">
+        <a href="https://apps.apple.com/us/app/gather/id6754841480" class="store-btn">
+          <svg class="s-icon" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          <div class="s-col"><span class="s-small">Download on the</span><span class="s-big">App Store</span></div>
+        </a>
+        <a href="https://play.google.com/store/apps/details?id=com.wefindyourtribe.gather" class="store-btn">
+          <svg class="s-icon" viewBox="0 0 24 24"><path d="M3 20.5v-17c0-.83.94-1.3 1.6-.8l14 8.5c.6.37.6 1.23 0 1.6l-14 8.5c-.66.5-1.6.03-1.6-.8z"/></svg>
+          <div class="s-col"><span class="s-small">Get it on</span><span class="s-big">Google Play</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span class="f-logo">Gather</span>
+    <div class="f-links"><a href="#">Contact</a><a href="#">Terms</a><a href="#">Privacy</a><a href="#">Safety</a></div>
+    <span class="f-copy">© 2026 Gather</span>
+  </footer>
+</div>
+
+<!-- ════════════════════════════════════════════
+     HOST PAGE
+════════════════════════════════════════════ -->
+<div class="page" id="page-host">
+
+  <!-- HERO -->
+  <section class="host-hero">
+    <div>
+      <span class="eyebrow rev">Become a host</span>
+      <h1 class="h1 host-h1 rev d1">Help people make real friends.<br>Get paid to do it.</h1>
+      <p class="host-sub rev d2">Host a small, recurring weekly gathering on Gather. You design the experience. You set the price. You keep 100% of ticket sales. We handle everything else.</p>
+      <div style="display:flex;gap:14px;flex-wrap:wrap" class="rev d3">
+        <a href="https://apps.apple.com/us/app/gather/id6754841480" class="btn-red">
+          Start hosting
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#host-steps" class="btn-outline">See how it works</a>
+      </div>
+    </div>
+    <div class="host-earn-card rev d2">
+      <div class="hec-lbl">Example monthly earnings</div>
+      <div class="hec-row"><span class="hl">Attendees</span><span class="hv">8 people</span></div>
+      <div class="hec-row"><span class="hl">Ticket price</span><span class="hv">$20 / week</span></div>
+      <div class="hec-row"><span class="hl">Sessions / month</span><span class="hv">4</span></div>
+      <div class="hec-row"><span class="hl">Gather subscription</span><span class="hv" style="color:var(--ink-3)">−$15</span></div>
+      <div class="hec-total">
+        <span class="ht-l">You keep</span>
+        <span class="ht-v">$625</span>
+      </div>
+      <p class="hec-note">With 12 people at $25/week that's $1,185/month · $14,220/year</p>
+    </div>
+  </section>
+
+  <!-- BEAU'S NOTE -->
+  <section class="section section-off">
+    <div class="wrap">
+      <div class="beau-note rev" style="display:grid;grid-template-columns:56px 1fr;gap:24px;align-items:start;max-width:680px">
+        <div style="width:56px;height:56px;border-radius:50%;background:var(--border);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:var(--ink-2)">BL</div>
+        <div>
+          <p style="font-size:17px;font-style:italic;line-height:1.7;color:var(--ink-2);margin-bottom:14px">"I built Gather because I spent 10 years feeling surrounded by people but not close to anyone. What changed that was showing up to the same group, every week, doing something together. That's how friendships form — not from one-off events, from consistency. If that idea resonates with you, you might be exactly who we're looking for."</p>
+          <p style="font-size:13px;font-weight:700;color:var(--ink-3)">— Beau, founder of Gather</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT YOU'RE BUILDING -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-header rev">
+        <span class="eyebrow">What this is</span>
+        <h2 class="h2">The four things that make a gathering work.</h2>
+      </div>
+      <div class="pillars rev d1" style="grid-template-columns:repeat(4,1fr);margin-top:0">
+        <div class="pillar">
+          <div class="p-ey">Recurring</div>
+          <div class="p-h">Same time, same place, every week</div>
+          <p class="p-b">Repetition is what turns strangers into friends — it's the same reason you're still close to people from school or an old job.</p>
+        </div>
+        <div class="pillar">
+          <div class="p-ey">Specific</div>
+          <div class="p-h">The more specific, the better the people</div>
+          <p class="p-b">Built around one activity, one community, one shared thing. The specificity attracts the right people without you having to screen anyone yourself.</p>
+        </div>
+        <div class="pillar">
+          <div class="p-ey">Intentional</div>
+          <div class="p-h">You state the goal out loud</div>
+          <p class="p-b">That everyone in the room will genuinely know each other by week six. That single declaration changes how people show up.</p>
+        </div>
+        <div class="pillar">
+          <div class="p-ey">Paid</div>
+          <div class="p-h">A filter, not a barrier</div>
+          <p class="p-b">People who pay show up. People who show up become regulars. Charging isn't just about income — it's a signal that this is worth taking seriously.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT HOSTS ARE BUILDING -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-header rev">
+        <span class="eyebrow">Real examples</span>
+        <h2 class="h2">What hosts are building.</h2>
+        <p class="body-lg" style="max-width:420px;margin-top:10px">In London and New York right now.</p>
+      </div>
+      <div class="hex-grid">
+        <div class="hex-card rev d1">
+          <div class="hex-thumb c1"></div>
+          <div class="hex-body">
+            <div class="hex-name">Gay Men's Cuddle Puddle</div>
+            <div class="hex-host">Beau · New York City</div>
+            <div class="hex-desc">A weekly gathering for gay men who want physical closeness in a consent-forward space. Grew from 4 attendees in week one to 10 by week three.</div>
+            <div class="hex-stat">4 → 10 in 3 weeks</div>
+          </div>
+        </div>
+        <div class="hex-card rev d2">
+          <div class="hex-thumb c2"></div>
+          <div class="hex-body">
+            <div class="hex-name">Embodied Contact Improv &amp; Dinner</div>
+            <div class="hex-host">Maya · London</div>
+            <div class="hex-desc">An hour of contact improv followed by dinner. Same eight people every Friday. By week six, they were making plans outside the gathering without prompting.</div>
+            <div class="hex-stat">8 regulars by week 4</div>
+          </div>
+        </div>
+        <div class="hex-card rev d3">
+          <div class="hex-thumb c4"></div>
+          <div class="hex-body">
+            <div class="hex-name">Queer Dads</div>
+            <div class="hex-host">James · New York City</div>
+            <div class="hex-desc">Started as a casual park meetup. Now a weekly gathering of eight queer fathers who are each other's first call when the parenting stuff gets hard.</div>
+            <div class="hex-stat">Park meetup → weekly community</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW TO START -->
+  <section class="section section-off" id="host-steps">
+    <div class="wrap">
+      <!-- HONEST QUALIFIER -->
+      <div class="rev" style="max-width:640px;margin:0 auto 64px;padding:28px 32px;border:1.5px solid var(--border-mid);border-radius:var(--r-lg);background:var(--white)">
+        <p style="font-size:17px;font-weight:700;color:var(--ink);margin-bottom:10px">Hosting badly hurts real people.</p>
+        <p style="font-size:14px;color:var(--ink-2);line-height:1.7">The people who come to your gathering are trusting you with something that genuinely matters to them — they want friends and they haven't been able to find them. We vet our hosts and we'll remove the ability to charge if the experience isn't there. If you're here because you want easy money, this isn't it. If you're here because creating community actually lights you up — welcome.</p>
+      </div>
+        <span class="eyebrow">Getting started</span>
+        <h2 class="h2">Five steps from idea to first gathering.</h2>
+      </div>
+      <div class="steps">
+        <div class="step rev">
+          <div class="s-num">1</div>
+          <div>
+            <div class="s-h">Pick your thing</div>
+            <p class="s-p">Something specific you genuinely care about. The more specific, the better. "Dinner club" is too broad. "Slow Sunday cook for sober queer people" is a gathering.</p>
+          </div>
+        </div>
+        <div class="step rev d1">
+          <div class="s-num">2</div>
+          <div>
+            <div class="s-h">Design your format</div>
+            <p class="s-p">What happens when someone walks in the door? A simple, repeatable structure — opening check-in, shared activity, closing round — gives people something to hold onto and come back for. The hosting guide walks you through this.</p>
+          </div>
+        </div>
+        <div class="step rev d2">
+          <div class="s-num">3</div>
+          <div>
+            <div class="s-h">Run a trial with friends first</div>
+            <p class="s-p">Your first gathering is a rehearsal. Get photos, sharpen the format, collect your first reviews. It's normal for this to feel rough — that's what it's for. Four people who enjoyed it is enough to open publicly.</p>
+          </div>
+        </div>
+        <div class="step rev d3">
+          <div class="s-num">4</div>
+          <div>
+            <div class="s-h">Go live on Gather</div>
+            <p class="s-p">Create your gathering in the app, set your price, and turn on recurring tickets. We'll help you reach the right people — through the app and, if you want, through Instagram ads targeted to your city and community.</p>
+          </div>
+        </div>
+        <div class="step rev d4">
+          <div class="s-num">5</div>
+          <div>
+            <div class="s-h">Show up. Then show up again.</div>
+            <p class="s-p">Encourage your first attendees to commit to five weeks — explain why it matters. By week three something shifts in the room. By week six, you've built something people would genuinely miss. That's when it stops being a gathering and starts being a community.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVERYTHING YOU GET -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-header rev">
+        <span class="eyebrow">What you get</span>
+        <h2 class="h2">Everything included when you subscribe.</h2>
+        <p class="body-lg" style="max-width:440px;margin-top:10px">You're not building this alone.</p>
+      </div>
+      <div class="sup-grid">
+        <div class="sup-card rev d1">
+          <div class="sup-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+          <div class="sup-h">Hosting guide</div>
+          <p class="sup-p">A complete guide to designing and running a recurring gathering — format design, opening and closing rituals, how to create real depth in a room, what to do when attendance dips. Written from real hosting experience.</p>
+        </div>
+        <div class="sup-card rev d2">
+          <div class="sup-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <div class="sup-h">Coaching calls</div>
+          <p class="sup-p">Twice-weekly open calls with Beau for all professional hosts. Bring a live problem, hear what others are navigating, or just listen in.</p>
+        </div>
+        <div class="sup-card rev d3">
+          <div class="sup-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+          <div class="sup-h">Host community</div>
+          <p class="sup-p">A private WhatsApp group of professional hosts. Honest feedback from people doing the same thing in real time.</p>
+        </div>
+        <div class="sup-card rev d1">
+          <div class="sup-icon"><svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></div>
+          <div class="sup-h">Ticketing &amp; payments</div>
+          <p class="sup-p">Collect payments through the app. You keep 100% of every ticket sale. Gather charges $15/month — nothing else, ever.</p>
+        </div>
+        <div class="sup-card rev d2">
+          <div class="sup-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12.4 19.79 19.79 0 0 1 1.61 3.8 2 2 0 0 1 3.58 1.6h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.18 6.18l1.27-1.82a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div class="sup-h">Group chat for attendees</div>
+          <p class="sup-p">Keeps the energy alive between sessions. People connect through the week and start making plans outside the gathering.</p>
+        </div>
+        <div class="sup-card rev d3">
+          <div class="sup-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+          <div class="sup-h">Help finding attendees</div>
+          <p class="sup-p">Gather surfaces your gathering to the right people nearby. We can also run targeted Instagram ads once you're ready to grow.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOST TESTIMONIALS -->
+  <section class="section section-dark">
+    <div class="wrap">
+      <div class="section-header rev">
+        <span class="eyebrow eyebrow-muted">From hosts</span>
+        <h2 class="h2" style="color:var(--white)">What hosts have built.</h2>
+      </div>
+      <div class="htesti-grid">
+        <div class="ht-card rev d1">
+          <p class="ht-q">"I started the cuddle gathering because I needed something that didn't exist for gay men. Four people in week one. Ten by week three. I didn't expect it to earn money. And I didn't expect it to become the thing I'm most proud of building."</p>
+          <div class="ht-auth">
+            <div class="ht-av">BL</div>
+            <div><div class="ht-name">Beau</div><div class="ht-role">Host · New York City</div></div>
+          </div>
+        </div>
+        <div class="ht-card rev d2">
+          <p class="ht-q">"I run four recurring gatherings a week. The thing I tell every new host is: just stay consistent. There's a moment, usually around week four, when something shifts in the room — and you realise you haven't built an event, you've built a community. Nothing else I've done feels like that."</p>
+          <div class="ht-auth">
+            <div class="ht-av">UD</div>
+            <div><div class="ht-name">Ulysses</div><div class="ht-role">Host · New York City</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="rev" style="text-align:center;max-width:500px;margin:0 auto">
+        <span class="eyebrow">FAQ</span>
+        <h2 class="h2">Questions about hosting.</h2>
+      </div>
+      <div class="faq">
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">Do I need hosting experience?<div class="faq-ico"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button>
+          <div class="faq-a">No. You need something you care about and the willingness to show up every week. The hosting guide covers everything else — from format design to how to create real depth in a room. Most of our best hosts started with zero experience.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">What kinds of gatherings work?<div class="faq-ico"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button>
+          <div class="faq-a">Specific ones. Anything where the description tells you immediately who it's for and who it isn't. Generic gatherings consistently underperform. Specific ones consistently over-deliver. Examples: ceramics nights, contact improv, sobriety circles, slow dinner clubs, movement practices, philosophy discussions.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">How do I find my first attendees?<div class="faq-ico"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button>
+          <div class="faq-a">Start with friends for your trial gathering. After that: the Gather app, your own social media, and Instagram ads we can run on your behalf targeting your specific community in your city. Your attendees become your best marketing — each person who finds their people through your gathering will tell someone about it.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">What does Gather cost?<div class="faq-ico"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button>
+          <div class="faq-a">$15/month or $99/year. You keep 100% of ticket sales from your attendees.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">What should I charge attendees?<div class="faq-ico"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button>
+          <div class="faq-a">Most hosts charge $10–$40 per session. Charging selects for commitment on both sides — people who pay treat it differently than people who showed up for free.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">What if I start with only a few people?<div class="faq-ico"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button>
+          <div class="faq-a">Good. Four people who return every week is a better foundation than twelve who come once. Start small, stay consistent, and let the gathering build itself.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">What is the Gather Guarantee?<div class="faq-ico"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button>
+          <div class="faq-a">If an attendee completes five sessions of your gathering and still feels they haven't made a real friend, Gather puts them into another gathering series for free — at no cost to you as the host. It's our promise that the platform works, and it gives new attendees the confidence to commit fully.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOST FOOTER CTA -->
+  <section class="hfcta">
+    <div class="wrap">
+      <span class="eyebrow rev" style="display:block">Get started</span>
+      <h2 class="h2 rev d1" style="margin-bottom:14px">Your gathering is waiting to exist.</h2>
+      <p class="body-lg rev d2">There are people in your city right now who need exactly what you could build. Create your gathering on Gather and we'll make sure they find it.</p>
+      <div class="hfcta-btns rev d3">
+        <a href="https://apps.apple.com/us/app/gather/id6754841480" class="btn-dark" style="font-size:15px;padding:15px 30px">Start hosting on Gather →</a>
+        <button class="btn-outline" onclick="goPage('guest')">or find a gathering instead</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span class="f-logo">Gather</span>
+    <div class="f-links"><a href="#">Contact</a><a href="#">Terms</a><a href="#">Privacy</a><a href="#">Safety</a></div>
+    <span class="f-copy">© 2026 Gather</span>
+  </footer>
+</div>
+
+<script>
+function goPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  window.scrollTo({top:0,behavior:'instant'});
+  setTimeout(runReveal,60);
+}
+
+function runReveal(){
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}});
+  },{threshold:.1,rootMargin:'0px 0px -32px 0px'});
+  document.querySelectorAll('.page.active .rev:not(.in)').forEach(el=>io.observe(el));
+}
+
+window.addEventListener('scroll',()=>{
+  document.getElementById('main-nav').classList.toggle('scrolled',window.scrollY>8);
+},{passive:true});
+
+function toggleFaq(btn){
+  const item=btn.closest('.faq-item');
+  const was=item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));
+  if(!was)item.classList.add('open');
+}
+
+document.addEventListener('DOMContentLoaded',()=>setTimeout(runReveal,80));
+</script>
+</body>
+</html>

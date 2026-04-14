@@ -156,6 +156,10 @@ body{font-family:var(--f);background:var(--white);color:var(--ink);overflow-x:hi
 ════════════════════════════════════════════════ */
 
 /* ── HERO ─────────────────────────────────────── */
+.hero-video::-webkit-media-controls{display:none !important}
+.hero-video::-webkit-media-controls-start-playback-button{display:none !important;-webkit-appearance:none}
+.hero-video::-webkit-media-controls-panel{display:none !important}
+.hero-video{pointer-events:none}
 
 /* ── DESKTOP: split layout ── */
 @media(min-width:769px){
@@ -2049,9 +2053,21 @@ function toggleFaq(btn){
 document.addEventListener('DOMContentLoaded',()=>{
   setTimeout(runReveal,80);
   updateNav();
-  // Force video autoplay — browsers sometimes block even muted autoplay
-  var v=document.querySelector('.hero-video');
-  if(v){v.muted=true;v.play().catch(function(){});}
+  // Force video autoplay
+  document.querySelectorAll('.hero-video').forEach(function(v){
+    v.muted=true;
+    v.setAttribute('muted','');
+    v.setAttribute('playsinline','');
+    v.play().catch(function(){});
+  });
+});
+// Retry autoplay on user interaction (iOS requires gesture)
+['touchstart','click','scroll'].forEach(function(evt){
+  document.addEventListener(evt,function(){
+    document.querySelectorAll('.hero-video').forEach(function(v){
+      if(v.paused){v.muted=true;v.play().catch(function(){});}
+    });
+  },{once:true,passive:true});
 });
 </script>
 

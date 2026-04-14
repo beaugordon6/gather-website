@@ -77,6 +77,8 @@ body{font-family:var(--f);background:var(--white);color:var(--ink);overflow-x:hi
 /* ── PAGES ────────────────────────────────────── */
 .page{display:none;padding-top:var(--nav-h)}
 .page.active{display:block}
+#page-guest{padding-top:0}
+#page-guest .hero-wrap{min-height:100vh}
 
 /* ── REVEAL ───────────────────────────────────── */
 .rev{opacity:0;transform:translateY(22px);transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1)}
@@ -171,29 +173,32 @@ body{font-family:var(--f);background:var(--white);color:var(--ink);overflow-x:hi
   position:absolute;inset:0;z-index:1;
   background:linear-gradient(
     to bottom,
-    rgba(0,0,0,.15) 0%,
-    rgba(0,0,0,.05) 40%,
-    rgba(0,0,0,.25) 100%
+    rgba(0,0,0,.1) 0%,
+    rgba(0,0,0,0) 30%,
+    rgba(0,0,0,.15) 60%,
+    rgba(0,0,0,.5) 100%
   );
 }
 .hero{
   position:relative;z-index:2;
   display:flex;flex-direction:column;align-items:center;text-align:center;
-  min-height:calc(100vh - var(--nav-h));
+  height:100vh;
   max-width:700px;margin:0 auto;
-  padding:0 36px;
-  justify-content:center;
+  padding:0 36px 48px;
+  justify-content:flex-end;
+  overflow:hidden;
 }
 .hero-h1{
   color:var(--white);
   text-shadow:0 2px 40px rgba(0,0,0,.5),0 1px 6px rgba(0,0,0,.3);
-  margin-bottom:20px;
+  margin-bottom:16px;
+  font-size:clamp(36px,8vw,72px);
 }
 .hero-h1 em{color:var(--white)}
 .hero-sub{
   font-size:17px;font-weight:600;line-height:1.6;
   color:rgba(255,255,255,.95) !important;
-  max-width:480px;margin:0 auto 32px;
+  max-width:480px;margin:0 auto 24px;
   background:rgba(255,255,255,.12);
   backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
   border:1px solid rgba(255,255,255,.2);
@@ -205,21 +210,21 @@ body{font-family:var(--f);background:var(--white);color:var(--ink);overflow-x:hi
   display:inline-flex;gap:10px;
 }
 .hero-stores .store-btn{
-  background:transparent;color:var(--white);
-  border:1.5px solid rgba(255,255,255,.5);
-  padding:10px 18px;border-radius:var(--r);
-  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  background:var(--white);color:var(--ink);
+  border:none;
+  padding:12px 20px;border-radius:var(--r);
+  box-shadow:0 2px 16px rgba(0,0,0,.15);
 }
-.hero-stores .store-btn .s-icon{fill:white}
-.hero-stores .store-btn:hover{background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.8);transform:translateY(-1px)}
+.hero-stores .store-btn .s-icon{fill:var(--ink)}
+.hero-stores .store-btn:hover{background:var(--off);transform:translateY(-1px);box-shadow:0 4px 20px rgba(0,0,0,.2)}
 .hero-scroll-hint{
-  position:absolute;bottom:28px;left:50%;transform:translateX(-50%);
-  color:rgba(255,255,255,.4);
+  margin-top:16px;
+  color:rgba(255,255,255,.5);
   animation:scrollBounce 2s ease-in-out infinite;
 }
 @keyframes scrollBounce{
-  0%,100%{transform:translateX(-50%) translateY(0)}
-  50%{transform:translateX(-50%) translateY(6px)}
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(6px)}
 }
 
 /* ── TRUST BAND ── */
@@ -687,11 +692,11 @@ footer{
   .h1{font-size:clamp(34px,9vw,48px);letter-spacing:-.035em}
   .h2{font-size:clamp(24px,6vw,32px)}
   .body-lg{font-size:16px;line-height:1.6}
-  .hero-sub{font-size:16px !important;line-height:1.6 !important}
+  .hero-sub{font-size:14px !important;line-height:1.55 !important;padding:16px 20px !important}
   .eyebrow{font-size:10px;margin-bottom:10px}
 
   /* ── HERO CLEANUP ── */
-  .hero{padding:48px 20px 56px !important}
+  .hero{padding:0 20px 40px !important}
   .store-row{gap:8px}
   .store-btn{padding:10px 16px}
   .s-big{font-size:13px}
@@ -1090,7 +1095,7 @@ footer{
   <section class="section section-off">
     <div class="wrap">
       <div class="beau-note rev" style="display:grid;grid-template-columns:56px 1fr;gap:24px;align-items:start;max-width:680px">
-        <img src="Images/avatars/avatar-1.jpeg" alt="Beau" style="width:56px;height:56px;border-radius:50%;object-fit:cover;flex-shrink:0">
+        <img src="Images/beau-headshot.jpg" alt="Beau" style="width:56px;height:56px;border-radius:50%;object-fit:cover;flex-shrink:0">
         <div>
           <p style="font-size:17px;font-style:italic;line-height:1.7;color:var(--ink-2);margin-bottom:14px">"I built Gather because I spent 10 years feeling surrounded by people but not close to anyone. What changed that was showing up to the same group, every week, doing something together. That's how friendships form — not from one-off events, from consistency. If that idea resonates with you, you might be exactly who we're looking for."</p>
           <p style="font-size:13px;font-weight:700;color:var(--ink-3)">— Beau, founder of Gather</p>
@@ -1370,7 +1375,7 @@ footer{
         <div class="ht-card rev d1">
           <p class="ht-q">"I started the cuddle gathering because I needed something that didn't exist for gay men. Four people in week one. Ten by week three. I didn't expect it to earn money. And I didn't expect it to become the thing I'm most proud of building."</p>
           <div class="ht-auth">
-            <img src="Images/avatars/avatar-1.jpeg" alt="" style="width:44px;height:44px;border-radius:50%;object-fit:cover;flex-shrink:0">
+            <img src="Images/beau-headshot.jpg" alt="Beau" style="width:44px;height:44px;border-radius:50%;object-fit:cover;flex-shrink:0">
             <div><div class="ht-name">Beau</div><div class="ht-role">Host · New York City</div></div>
           </div>
         </div>
@@ -1914,7 +1919,7 @@ footer{
 
         <!-- BEAU'S NOTE -->
         <div style="display:flex;gap:16px;align-items:flex-start;padding:24px 0;border-top:1px solid var(--border)">
-          <img src="Images/avatars/avatar-1.jpeg" alt="Beau" style="width:48px;height:48px;border-radius:50%;object-fit:cover;flex-shrink:0">
+          <img src="Images/beau-headshot.jpg" alt="Beau" style="width:48px;height:48px;border-radius:50%;object-fit:cover;flex-shrink:0">
           <div>
             <p style="font-size:15px;color:var(--ink-2);line-height:1.7;font-style:italic">"Now just show up — for the guide, for the calls, for your first gathering. I'll be there every step of the way."</p>
             <p style="font-size:13px;font-weight:700;color:var(--ink);margin-top:8px">Beau · Founder, Gather</p>

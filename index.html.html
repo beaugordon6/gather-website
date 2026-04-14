@@ -37,9 +37,19 @@ body{font-family:var(--f);background:var(--white);color:var(--ink);overflow-x:hi
   background:rgba(255,255,255,.9);
   backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
   border-bottom:1px solid transparent;
-  transition:border-color .2s;
+  transition:background .3s,border-color .2s;
 }
 .nav.scrolled{border-bottom-color:var(--border)}
+.nav.nav-transparent{background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none}
+.nav.nav-transparent .nav-logo svg path{fill:white}
+.nav.nav-transparent .nav-host{color:var(--white);border-color:rgba(255,255,255,.35)}
+.nav.nav-transparent .nav-host:hover{background:var(--white);color:var(--ink);border-color:var(--white)}
+.nav.nav-transparent .nav-download{background:var(--white);color:var(--ink)}
+.nav.nav-transparent .nav-download:hover{background:var(--off)}
+.nav.nav-transparent.scrolled{background:rgba(255,255,255,.9);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.nav.nav-transparent.scrolled .nav-logo svg path{fill:var(--ink)}
+.nav.nav-transparent.scrolled .nav-host{color:var(--ink);border-color:var(--border-mid)}
+.nav.nav-transparent.scrolled .nav-download{background:var(--red);color:var(--white)}
 .nav-logo{cursor:pointer;display:block}
 .nav-right{display:flex;align-items:center;gap:10px}
 .nav-host{
@@ -177,24 +187,22 @@ body{font-family:var(--f);background:var(--white);color:var(--ink);overflow-x:hi
 }
 .hero-h1 em{color:var(--white)}
 .hero-sub{
-  font-size:17px;font-weight:400;line-height:1.6;
-  color:rgba(255,255,255,.8) !important;
-  max-width:440px;margin:0 auto 32px;
-  text-shadow:0 1px 16px rgba(0,0,0,.3);
+  font-size:17px;font-weight:600;line-height:1.6;
+  color:rgba(255,255,255,.85) !important;
+  max-width:480px;margin:0 auto 32px;
+  text-shadow:0 1px 20px rgba(0,0,0,.4);
 }
 .hero-stores{
-  display:inline-flex;gap:8px;
-  background:rgba(255,255,255,.95);
-  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
-  padding:10px 14px;border-radius:18px;
-  box-shadow:0 4px 24px rgba(0,0,0,.15);
+  display:inline-flex;gap:10px;
 }
 .hero-stores .store-btn{
-  background:var(--ink);color:var(--white);
-  padding:10px 16px;border-radius:12px;
+  background:transparent;color:var(--white);
+  border:1.5px solid rgba(255,255,255,.5);
+  padding:10px 18px;border-radius:var(--r);
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
 }
 .hero-stores .store-btn .s-icon{fill:white}
-.hero-stores .store-btn:hover{background:#000;transform:translateY(-1px)}
+.hero-stores .store-btn:hover{background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.8);transform:translateY(-1px)}
 .hero-scroll-hint{
   position:absolute;bottom:28px;left:50%;transform:translateX(-50%);
   color:rgba(255,255,255,.4);
@@ -239,11 +247,10 @@ body{font-family:var(--f);background:var(--white);color:var(--ink);overflow-x:hi
 .hero-proof{display:flex;align-items:center;gap:12px;margin-top:24px;justify-content:center}
 .av-row{display:flex}
 .av{
-  width:30px;height:30px;border-radius:50%;
-  border:2px solid var(--white);background:var(--off);
-  font-size:10px;font-weight:700;color:var(--ink-2);
-  display:flex;align-items:center;justify-content:center;
-  margin-left:-7px;
+  width:32px;height:32px;border-radius:50%;
+  border:2px solid var(--white);
+  margin-left:-8px;
+  object-fit:cover;
 }
 .av:first-child{margin-left:0}
 .proof-txt{font-size:13px;color:var(--ink-3)}
@@ -784,8 +791,7 @@ footer{
     <div class="trust-inner">
       <div class="trust-proof">
         <div class="av-row">
-          <div class="av">AK</div><div class="av">MR</div>
-          <div class="av">JL</div><div class="av">ST</div><div class="av">+</div>
+          <img class="av" src="Images/avatars/avatar-1.jpeg" alt=""><img class="av" src="Images/avatars/avatar-2.jpeg" alt=""><img class="av" src="Images/avatars/avatar-3.jpg" alt=""><img class="av" src="Images/avatars/avatar-4.jpeg" alt=""><img class="av" src="Images/avatars/avatar-5.jpeg" alt="">
         </div>
         <div class="proof-txt">
           <strong>1,300+ members</strong>
@@ -960,39 +966,21 @@ footer{
         <div class="t-card dark rev d1">
           <p class="t-q">"The fact that it's the same people every week is everything. You stop performing. You stop trying to make a good impression. You just actually get to know each other. That's what was missing."</p>
           <div class="t-auth">
-            <div style="width:64px;height:64px;flex-shrink:0"><svg width="68" height="68" viewBox="0 0 68 68" style="display:block;border-radius:50%;overflow:hidden;flex-shrink:0">
-  <rect width="68" height="68" fill="#F0EBE3"/>
-  <ellipse cx="34" cy="76" rx="28" ry="24" fill="#7B96B5"/>
-  <path d="M20 31 Q18 12 34 12 Q50 12 48 31 Q52 44 48 48 L20 48 Q16 44 20 31Z" fill="#2D1A0A"/>
-  <ellipse cx="34" cy="31" rx="13" ry="15" fill="#F0C090"/>
-  <rect x="28" y="40" width="12" height="10" fill="#F0C090"/>
-</svg></div>
+            <img src="Images/avatars/avatar-6.jpeg" alt="" style="width:48px;height:48px;border-radius:50%;object-fit:cover;flex-shrink:0">
             <div><div class="t-name">Jamie H., 31</div><div class="t-loc">London</div></div>
           </div>
         </div>
         <div class="t-card rev d2">
           <p class="t-q">"I moved to New York without knowing a single person. I'd been to so many events where I left feeling lonelier than when I arrived. By week six I had five people I genuinely wanted to keep seeing."</p>
           <div class="t-auth">
-            <div style="width:64px;height:64px;flex-shrink:0"><svg width="68" height="68" viewBox="0 0 68 68" style="display:block;border-radius:50%;overflow:hidden;flex-shrink:0">
-  <rect width="68" height="68" fill="#E8EFF5"/>
-  <ellipse cx="34" cy="76" rx="28" ry="24" fill="#4A7C59"/>
-  <path d="M21 29 Q21 12 34 12 Q47 12 47 29 Q44 23 34 22 Q24 23 21 29Z" fill="#150D04"/>
-  <ellipse cx="34" cy="31" rx="13" ry="15" fill="#7A4A28"/>
-  <rect x="28" y="40" width="12" height="10" fill="#7A4A28"/>
-</svg></div>
+            <img src="Images/avatars/avatar-7.jpg" alt="" style="width:48px;height:48px;border-radius:50%;object-fit:cover;flex-shrink:0">
             <div><div class="t-name">Marcus K., 29</div><div class="t-loc">New York City</div></div>
           </div>
         </div>
         <div class="t-card rev d3">
           <p class="t-q">"I've tried every version of meeting people — apps, events, coworking spaces. The difference here is you don't have to work at it. The format does the work. You just have to show up."</p>
           <div class="t-auth">
-            <div style="width:64px;height:64px;flex-shrink:0"><svg width="68" height="68" viewBox="0 0 68 68" style="display:block;border-radius:50%;overflow:hidden;flex-shrink:0">
-  <rect width="68" height="68" fill="#F5EEE6"/>
-  <ellipse cx="34" cy="76" rx="28" ry="24" fill="#9B6B8C"/>
-  <path d="M20 31 Q18 12 34 12 Q50 12 48 31 Q52 44 48 48 L20 48 Q16 44 20 31Z" fill="#1C0D05"/>
-  <ellipse cx="34" cy="31" rx="13" ry="15" fill="#C4855A"/>
-  <rect x="28" y="40" width="12" height="10" fill="#C4855A"/>
-</svg></div>
+            <img src="Images/avatars/avatar-8.webp" alt="" style="width:48px;height:48px;border-radius:50%;object-fit:cover;flex-shrink:0">
             <div><div class="t-name">Sofia R., 34</div><div class="t-loc">London</div></div>
           </div>
         </div>
@@ -1095,13 +1083,7 @@ footer{
   <section class="section section-off">
     <div class="wrap">
       <div class="beau-note rev" style="display:grid;grid-template-columns:56px 1fr;gap:24px;align-items:start;max-width:680px">
-        <div style="width:60px;height:60px;flex-shrink:0"><svg width="60" height="60" viewBox="0 0 60 60" style="display:block;border-radius:50%;overflow:hidden;flex-shrink:0">
-  <rect width="60" height="60" fill="#EEE8E2"/>
-  <ellipse cx="30" cy="67" rx="28" ry="24" fill="#E84530"/>
-  <path d="M17 25 Q17 11 30 11 Q43 11 43 25 Q40 20 30 19 Q20 20 17 25Z" fill="#6B4A2A"/>
-  <ellipse cx="30" cy="28" rx="13" ry="15" fill="#E8AC78"/>
-  <rect x="24" y="36" width="12" height="10" fill="#E8AC78"/>
-</svg></div>
+        <img src="Images/avatars/avatar-1.jpeg" alt="Beau" style="width:56px;height:56px;border-radius:50%;object-fit:cover;flex-shrink:0">
         <div>
           <p style="font-size:17px;font-style:italic;line-height:1.7;color:var(--ink-2);margin-bottom:14px">"I built Gather because I spent 10 years feeling surrounded by people but not close to anyone. What changed that was showing up to the same group, every week, doing something together. That's how friendships form — not from one-off events, from consistency. If that idea resonates with you, you might be exactly who we're looking for."</p>
           <p style="font-size:13px;font-weight:700;color:var(--ink-3)">— Beau, founder of Gather</p>
@@ -1381,26 +1363,14 @@ footer{
         <div class="ht-card rev d1">
           <p class="ht-q">"I started the cuddle gathering because I needed something that didn't exist for gay men. Four people in week one. Ten by week three. I didn't expect it to earn money. And I didn't expect it to become the thing I'm most proud of building."</p>
           <div class="ht-auth">
-            <div style="width:52px;height:52px;flex-shrink:0"><svg width="52" height="52" viewBox="0 0 52 52" style="display:block;border-radius:50%;overflow:hidden;flex-shrink:0">
-  <rect width="52" height="52" fill="#EEE8E2"/>
-  <ellipse cx="26" cy="58" rx="28" ry="24" fill="#E84530"/>
-  <path d="M13 22 Q13 9 26 9 Q39 9 39 22 Q36 17 26 17 Q16 17 13 22Z" fill="#6B4A2A"/>
-  <ellipse cx="26" cy="24" rx="13" ry="15" fill="#E8AC78"/>
-  <rect x="20" y="31" width="12" height="10" fill="#E8AC78"/>
-</svg></div>
+            <img src="Images/avatars/avatar-1.jpeg" alt="" style="width:44px;height:44px;border-radius:50%;object-fit:cover;flex-shrink:0">
             <div><div class="ht-name">Beau</div><div class="ht-role">Host · New York City</div></div>
           </div>
         </div>
         <div class="ht-card rev d2">
           <p class="ht-q">"I run four recurring gatherings a week. The thing I tell every new host is: just stay consistent. There's a moment, usually around week four, when something shifts in the room — and you realise you haven't built an event, you've built a community. Nothing else I've done feels like that."</p>
           <div class="ht-auth">
-            <div style="width:52px;height:52px;flex-shrink:0"><svg width="52" height="52" viewBox="0 0 52 52" style="display:block;border-radius:50%;overflow:hidden;flex-shrink:0">
-  <rect width="52" height="52" fill="#EBE8F2"/>
-  <ellipse cx="26" cy="58" rx="28" ry="24" fill="#3B5A7E"/>
-  <path d="M13 22 Q13 9 26 9 Q39 9 39 22 Q36 17 26 17 Q16 17 13 22Z" fill="#120A02"/>
-  <ellipse cx="26" cy="24" rx="13" ry="15" fill="#5C3018"/>
-  <rect x="20" y="31" width="12" height="10" fill="#5C3018"/>
-</svg></div>
+            <img src="Images/avatars/avatar-4.jpeg" alt="" style="width:44px;height:44px;border-radius:50%;object-fit:cover;flex-shrink:0">
             <div><div class="ht-name">Ulysses</div><div class="ht-role">Host · New York City</div></div>
           </div>
         </div>
@@ -1937,13 +1907,7 @@ footer{
 
         <!-- BEAU'S NOTE -->
         <div style="display:flex;gap:16px;align-items:flex-start;padding:24px 0;border-top:1px solid var(--border)">
-          <div style="width:48px;height:48px;flex-shrink:0"><svg width="48" height="48" viewBox="0 0 48 48" style="display:block;border-radius:50%;overflow:hidden;flex-shrink:0">
-  <rect width="48" height="48" fill="#EEE8E2"/>
-  <ellipse cx="24" cy="53" rx="28" ry="24" fill="#E84530"/>
-  <path d="M11 20 Q11 9 24 9 Q37 9 37 20 Q34 16 24 15 Q14 16 11 20Z" fill="#6B4A2A"/>
-  <ellipse cx="24" cy="22" rx="13" ry="15" fill="#E8AC78"/>
-  <rect x="18" y="28" width="12" height="10" fill="#E8AC78"/>
-</svg></div>
+          <img src="Images/avatars/avatar-1.jpeg" alt="Beau" style="width:48px;height:48px;border-radius:50%;object-fit:cover;flex-shrink:0">
           <div>
             <p style="font-size:15px;color:var(--ink-2);line-height:1.7;font-style:italic">"Now just show up — for the guide, for the calls, for your first gathering. I'll be there every step of the way."</p>
             <p style="font-size:13px;font-weight:700;color:var(--ink);margin-top:8px">Beau · Founder, Gather</p>
@@ -2033,6 +1997,13 @@ function goPage(id){
   document.getElementById('page-'+id).classList.add('active');
   window.scrollTo({top:0,behavior:'instant'});
   setTimeout(runReveal,60);
+  updateNav();
+}
+function updateNav(){
+  var nav=document.getElementById('main-nav');
+  var isGuest=document.getElementById('page-guest').classList.contains('active');
+  if(isGuest && window.scrollY<100){nav.classList.add('nav-transparent')}
+  else{nav.classList.remove('nav-transparent')}
 }
 
 function runReveal(){
@@ -2044,6 +2015,7 @@ function runReveal(){
 
 window.addEventListener('scroll',()=>{
   document.getElementById('main-nav').classList.toggle('scrolled',window.scrollY>8);
+  updateNav();
 },{passive:true});
 
 function toggleFaq(btn){
@@ -2053,7 +2025,7 @@ function toggleFaq(btn){
   if(!was)item.classList.add('open');
 }
 
-document.addEventListener('DOMContentLoaded',()=>setTimeout(runReveal,80));
+document.addEventListener('DOMContentLoaded',()=>{setTimeout(runReveal,80);updateNav()});
 </script>
 
 <!-- DOWNLOAD MODAL -->

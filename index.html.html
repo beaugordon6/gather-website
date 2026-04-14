@@ -834,7 +834,7 @@ footer{
       </div>
     </section>
     <div class="hero-video-panel">
-      <video class="hero-video" autoplay muted loop playsinline webkit-playsinline preload="auto" src="Images/hero-video.mp4"></video>
+      <video class="hero-video" autoplay muted loop playsinline preload="auto"><source src="Images/hero-video.mp4" type="video/mp4"></video>
       <div class="hero-overlay"></div>
     </div>
   </div>
@@ -1886,7 +1886,7 @@ footer{
         <div style="background:var(--ink);color:var(--white);border-radius:var(--r-lg);padding:28px 32px;margin-bottom:48px">
           <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--red);margin-bottom:10px">Your one job this week</div>
           <p style="font-size:20px;font-weight:600;line-height:1.5;margin-bottom:20px">Open the Hosting Guide. Read Chapter 1. Decide what your gathering will be about.</p>
-          <a href="https://notion.so" target="_blank" class="btn-red" style="display:inline-flex;align-items:center;gap:8px;font-size:15px;padding:14px 28px">
+          <a href="https://www.notion.so/6012eba6146d4c2dbe786ffbc29d5089?v=efb5a4784b36448d90fa45a5025631a3" target="_blank" class="btn-red" style="display:inline-flex;align-items:center;gap:8px;font-size:15px;padding:14px 28px">
             Open the Hosting Guide →
           </a>
         </div>
@@ -1901,7 +1901,7 @@ footer{
             <div style="flex:1">
               <div style="font-size:16px;font-weight:700;margin-bottom:4px">Read the Hosting Guide</div>
               <p style="font-size:14px;color:var(--ink-2);line-height:1.6;margin-bottom:12px">Your complete step-by-step system. Chapter 1 is all you need to get started — it covers how to design your gathering and what makes a specific idea work.</p>
-              <a href="https://notion.so" target="_blank" style="font-size:14px;font-weight:700;color:var(--red);text-decoration:none;display:inline-flex;align-items:center;gap:4px">Open guide <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+              <a href="https://www.notion.so/6012eba6146d4c2dbe786ffbc29d5089?v=efb5a4784b36448d90fa45a5025631a3" target="_blank" style="font-size:14px;font-weight:700;color:var(--red);text-decoration:none;display:inline-flex;align-items:center;gap:4px">Open guide <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
             </div>
           </div>
 
@@ -2054,18 +2054,26 @@ document.addEventListener('DOMContentLoaded',()=>{
   setTimeout(runReveal,80);
   updateNav();
   // Force video autoplay
-  document.querySelectorAll('.hero-video').forEach(function(v){
-    v.muted=true;
-    v.setAttribute('muted','');
-    v.setAttribute('playsinline','');
-    v.play().catch(function(){});
-  });
+  function forcePlay(){
+    document.querySelectorAll('.hero-video').forEach(function(v){
+      v.muted=true;
+      v.defaultMuted=true;
+      v.setAttribute('muted','');
+      v.setAttribute('playsinline','');
+      v.setAttribute('autoplay','');
+      var p=v.play();
+      if(p&&p.catch)p.catch(function(){});
+    });
+  }
+  forcePlay();
+  setTimeout(forcePlay,500);
+  setTimeout(forcePlay,1500);
 });
-// Retry autoplay on user interaction (iOS requires gesture)
-['touchstart','click','scroll'].forEach(function(evt){
+// Retry on any user interaction (Safari/iOS requires gesture)
+['touchstart','click','scroll','mousemove'].forEach(function(evt){
   document.addEventListener(evt,function(){
     document.querySelectorAll('.hero-video').forEach(function(v){
-      if(v.paused){v.muted=true;v.play().catch(function(){});}
+      if(v.paused){v.muted=true;v.defaultMuted=true;v.play().catch(function(){});}
     });
   },{once:true,passive:true});
 });

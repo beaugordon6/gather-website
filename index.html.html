@@ -227,11 +227,10 @@ body{font-family:var(--f);background:var(--white);color:var(--ink);overflow-x:hi
   .hero{
     position:relative;z-index:2;
     display:flex;flex-direction:column;align-items:center;text-align:center;
-    height:100vh;
+    min-height:100svh;min-height:100vh;
     max-width:700px;margin:0 auto;
-    padding:0 20px 40px;
+    padding:0 20px 32px;
     justify-content:flex-end;
-    overflow:hidden;
   }
   .hero-h1{
     color:var(--white);
@@ -241,14 +240,14 @@ body{font-family:var(--f);background:var(--white);color:var(--ink);overflow-x:hi
   }
   .hero-h1 em{color:var(--white)}
   .hero-sub{
-    font-size:14px;font-weight:600;line-height:1.55;
+    font-size:13px;font-weight:600;line-height:1.5;
     color:rgba(255,255,255,.95) !important;
-    max-width:480px;margin:0 auto 24px;
+    max-width:480px;margin:0 auto 20px;
     background:rgba(255,255,255,.12);
     backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
     border:1px solid rgba(255,255,255,.2);
-    border-radius:var(--r-xl);
-    padding:16px 20px;
+    border-radius:var(--r-lg);
+    padding:14px 18px;
     text-shadow:0 1px 8px rgba(0,0,0,.2);
   }
 }

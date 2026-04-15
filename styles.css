@@ -176,7 +176,7 @@ a,button{transition:opacity .2s,color .2s,background .2s,transform .2s,box-shado
   background:linear-gradient(90deg,var(--ink),#333330,var(--red),#333330,var(--ink));
 }
 .s-icon{width:20px;height:20px;flex-shrink:0;fill:white}
-.s-col{display:flex;flex-direction:column;line-height:1}
+.s-col{display:flex;flex-direction:column;line-height:1;white-space:nowrap}
 .s-small{font-size:9px;font-weight:400;opacity:.6;margin-bottom:2px}
 .s-big{font-size:15px;font-weight:700}
 
@@ -493,7 +493,7 @@ a,button{transition:opacity .2s,color .2s,background .2s,transform .2s,box-shado
 .testi-marquee.user-scrolling .testi-track{animation:none}
 @keyframes testiScroll{
   0%{transform:translateX(0)}
-  100%{transform:translateX(-50%)}
+  100%{transform:translateX(-33.33%)}
 }
 .t-card{
   width:300px;flex-shrink:0;

@@ -67,10 +67,10 @@ document.addEventListener('DOMContentLoaded',()=>{
   setTimeout(runReveal,80);
   updateNav();
 
-  // Duplicate testimonial cards for seamless marquee loop
+  // Triplicate testimonial cards for seamless marquee loop
   document.querySelectorAll('.testi-track').forEach(function(track){
     var cards=track.innerHTML;
-    track.innerHTML=cards+cards;
+    track.innerHTML=cards+cards+cards;
   });
 
   // Allow manual scroll to override auto-scroll on testimonial carousels

@@ -1,0 +1,7 @@
+{
+  "rewrites": [
+    { "source": "/host", "destination": "/index.html" },
+    { "source": "/pricing", "destination": "/index.html" },
+    { "source": "/hosting-hub", "destination": "/hosting-hub.html" }
+  ]
+}

@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /hosting-hub
+
+Sitemap: https://letsgather.app/sitemap.xml

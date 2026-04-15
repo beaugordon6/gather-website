@@ -761,7 +761,7 @@
         <h1 class="h1" style="margin-top:12px">Start earning from<br><em>something you love.</em></h1>
         <p class="body-lg" style="max-width:500px;margin:16px auto 28px;color:var(--ink-2)">Host a weekly gathering on Gather. Keep 100% of what you earn. We give you everything you need to make it work.</p>
         <!-- Above-fold CTA for already-convinced visitors -->
-        <button onclick="document.getElementById('payment-cta').scrollIntoView({behavior:'smooth'})" class="btn-red" style="font-size:16px;padding:16px 36px;margin-top:4px">Join now — $15.99/month <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+        <button onclick="document.getElementById('payment-cta').scrollIntoView({behavior:'smooth'})" class="btn-red" style="font-size:16px;padding:16px 36px;margin-top:4px">Join now <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
       </div>
     </section>
 
@@ -835,27 +835,29 @@
       </div>
     </section>
 
-    <!-- PRICE + CTA + GUARANTEE (all together) -->
+    <!-- PRICE + CTA + GUARANTEE -->
     <section class="section" id="payment-cta">
       <div class="wrap" style="max-width:520px">
+
+        <div style="text-align:center;margin-bottom:32px">
+          <span class="eyebrow">Choose your plan</span>
+          <h2 class="h2">Start hosting today.</h2>
+        </div>
 
         <!-- RevenueCat paywall -->
         <div style="border-radius:var(--r-xl);overflow:hidden;margin-bottom:16px;min-height:200px;position:relative">
           <div id="rc-paywall-container"></div>
           <div id="rc-paywall-loading" style="text-align:center;padding:48px 40px">
-            <p style="font-size:15px;color:var(--ink-2)">Loading checkout…</p>
+            <p class="body" style="color:var(--ink-2)">Loading checkout…</p>
           </div>
-          <p id="rc-paywall-error" role="alert" hidden style="font-size:14px;color:var(--red);text-align:center;padding:20px"></p>
+          <p id="rc-paywall-error" role="alert" hidden style="color:var(--red);text-align:center;padding:20px"></p>
         </div>
-        <p style="font-size:12px;color:var(--ink-3);text-align:center;margin-bottom:16px">18+ only · Cancel anytime · Set up your gathering in the app after joining</p>
+        <p class="small" style="text-align:center;margin-bottom:20px">18+ only · Cancel anytime · Set up your gathering in the app after joining</p>
 
-        <!-- Guarantee — immediately below CTA -->
-        <div style="padding:20px 24px;background:var(--off);border:1.5px solid var(--border);border-radius:var(--r-lg);display:flex;align-items:flex-start;gap:14px">
-          <div style="flex-shrink:0;margin-top:2px;color:var(--ink-2)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-          <div>
-            <div style="font-size:14px;font-weight:700;color:var(--ink);margin-bottom:4px">The Gather Host Guarantee</div>
-            <p style="font-size:13px;color:var(--ink-2);line-height:1.65">Host 5 gatherings with at least two paid attendees in 3 months. If you haven't earned back your subscription, we'll refund you in full — no questions asked. At $10/person with two attendees, your 5th gathering already covers the annual fee.</p>
-          </div>
+        <!-- Guarantee -->
+        <div style="padding:20px 24px;border:1.5px solid var(--border);border-radius:var(--r-lg);text-align:center">
+          <div style="font-weight:700;color:var(--ink);margin-bottom:6px">The Gather Host Guarantee</div>
+          <p class="small">Host 5 gatherings with at least two paid attendees in 3 months. If you haven't earned back your subscription, we'll refund you in full — no questions asked.</p>
         </div>
 
       </div>

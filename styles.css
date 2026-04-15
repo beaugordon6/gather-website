@@ -96,8 +96,8 @@ body{font-family:var(--f);background:var(--white);color:var(--ink);overflow-x:hi
 }
 .h1 em{font-style:italic;font-weight:700}
 .h2{font-size:clamp(30px,3.8vw,46px);font-weight:700;letter-spacing:-.04em;line-height:1.08}
-.h3{font-size:18px;font-weight:700;letter-spacing:-.02em;line-height:1.3}
-.body-lg{font-size:18px;font-weight:400;line-height:1.7;color:var(--ink-2)}
+.h3{font-size:16px;font-weight:700;letter-spacing:-.02em;line-height:1.3}
+.body-lg{font-size:17px;font-weight:400;line-height:1.7;color:var(--ink-2)}
 .body{font-size:15px;font-weight:400;line-height:1.65;color:var(--ink-2)}
 .small{font-size:13px;color:var(--ink-3);line-height:1.5}
 
@@ -397,7 +397,7 @@ body{font-family:var(--f);background:var(--white);color:var(--ink);overflow-x:hi
   position:relative;z-index:1;
 }
 .g-body{padding:18px 20px 20px}
-.g-name{font-size:17px;font-weight:700;letter-spacing:-.02em;margin-bottom:8px;line-height:1.25}
+.g-name{font-size:16px;font-weight:700;letter-spacing:-.02em;margin-bottom:8px;line-height:1.25}
 .g-desc{
   font-size:13px;color:var(--ink-2);line-height:1.6;margin-bottom:16px;
   display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;
@@ -576,7 +576,7 @@ footer{
   display:grid;grid-template-columns:1fr 1fr;
   gap:80px;align-items:start;
 }
-.build-body{font-size:17px;color:var(--ink-2);line-height:1.7;margin-bottom:20px}
+.build-body{font-size:16px;color:var(--ink-2);line-height:1.7;margin-bottom:20px}
 .pillars{
   display:grid;grid-template-columns:1fr 1fr;
   gap:14px;margin-top:48px;
@@ -594,7 +594,7 @@ footer{
   .pillar .p-b{font-size:13px;line-height:1.55}
 }
 .pillar{padding:22px;background:var(--white);border-radius:var(--r-lg);border:1px solid var(--border)}
-.p-ey{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--red);margin-bottom:7px}
+.p-ey{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:7px}
 .p-h{font-size:16px;font-weight:700;letter-spacing:-.01em;margin-bottom:6px}
 .p-b{font-size:13px;color:var(--ink-2);line-height:1.6}
 
@@ -628,8 +628,8 @@ footer{
   font-size:42px;font-weight:700;color:var(--border-mid);
   line-height:1;text-align:center;padding-top:3px;letter-spacing:-.04em;
 }
-.s-h{font-size:17px;font-weight:700;letter-spacing:-.02em;margin-bottom:6px}
-.s-p{font-size:14px;color:var(--ink-2);line-height:1.65}
+.s-h{font-size:16px;font-weight:700;letter-spacing:-.02em;margin-bottom:6px}
+.s-p{font-size:15px;color:var(--ink-2);line-height:1.65}
 
 /* Support grid */
 .sup-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:48px}
@@ -653,7 +653,7 @@ footer{
   border-radius:var(--r-xl);padding:36px;
 }
 .ht-q{
-  font-size:18px;font-weight:400;font-style:italic;
+  font-size:16px;font-weight:400;font-style:italic;
   line-height:1.65;color:rgba(255,255,255,.85);margin-bottom:22px;
 }
 .ht-auth{display:flex;align-items:center;gap:10px;padding-top:18px;border-top:1px solid rgba(255,255,255,.08)}
@@ -673,7 +673,7 @@ footer{
   width:100%;background:none;border:none;cursor:pointer;
   display:flex;justify-content:space-between;align-items:center;gap:20px;
   padding:20px 0;text-align:left;
-  font-family:var(--f);font-size:17px;font-weight:700;
+  font-family:var(--f);font-size:16px;font-weight:700;
   letter-spacing:-.015em;color:var(--ink);
 }
 .faq-ico{

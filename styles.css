@@ -100,13 +100,7 @@ a,button{transition:opacity .2s,color .2s,background .2s,transform .2s,box-shado
   100%{background-position:0% 50%}
 }
 
-/* ── SMOOTH SCROLL INDICATORS ── */
-.scroll-outer{position:relative}
-.scroll-outer::after{
-  content:'';position:absolute;top:0;right:0;bottom:0;width:40px;
-  background:linear-gradient(to right,transparent,var(--white));
-  pointer-events:none;z-index:2;
-}
+/* (scroll-outer edge fade handled by mask-image in the main .scroll-outer rule below) */
 
 /* ── LAYOUT ───────────────────────────────────── */
 .wrap{max-width:1160px;margin:0 auto;padding:0 36px}
@@ -403,12 +397,23 @@ a,button{transition:opacity .2s,color .2s,background .2s,transform .2s,box-shado
 .section-header .h2{margin-bottom:12px}
 
 .scroll-outer{
-  overflow-x:auto;scrollbar-width:none;
-  padding:0 36px 20px;
-  -webkit-overflow-scrolling:touch;
+  overflow:hidden;
+  padding:0 0 20px;
+  mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);
 }
 .scroll-outer::-webkit-scrollbar{display:none}
-.scroll-track{display:flex;gap:16px;width:max-content;padding-bottom:2px}
+.scroll-track{
+  display:flex;gap:16px;width:max-content;padding:0 36px 2px;
+  animation:gatherScroll 80s linear infinite;
+}
+.scroll-track:hover{animation-play-state:paused}
+.scroll-outer.user-scrolling{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.scroll-outer.user-scrolling .scroll-track{animation:none;padding:0 36px 2px}
+@keyframes gatherScroll{
+  0%{transform:translateX(0)}
+  100%{transform:translateX(-33.33%)}
+}
 
 .g-card{
   width:288px;flex-shrink:0;

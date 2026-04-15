@@ -67,29 +67,34 @@ document.addEventListener('DOMContentLoaded',()=>{
   setTimeout(runReveal,80);
   updateNav();
 
-  // Triplicate testimonial cards for seamless marquee loop
-  document.querySelectorAll('.testi-track').forEach(function(track){
+  // Triplicate cards for seamless marquee loop (both testimonial + gathering carousels)
+  document.querySelectorAll('.testi-track, .scroll-track').forEach(function(track){
     var cards=track.innerHTML;
     track.innerHTML=cards+cards+cards;
   });
 
-  // Allow manual scroll to override auto-scroll on testimonial carousels
-  document.querySelectorAll('.testi-marquee').forEach(function(marquee){
+  // Allow manual touch/scroll to override auto-scroll
+  function wireMarquee(container,trackSelector){
     var timeout;
-    marquee.style.overflowX='auto';
-    marquee.style.scrollbarWidth='none';
-    marquee.addEventListener('touchstart',function(){
-      marquee.classList.add('user-scrolling');
+    container.addEventListener('touchstart',function(){
+      container.classList.add('user-scrolling');
       clearTimeout(timeout);
     },{passive:true});
-    marquee.addEventListener('touchend',function(){
-      timeout=setTimeout(function(){marquee.classList.remove('user-scrolling')},5000);
+    container.addEventListener('touchend',function(){
+      timeout=setTimeout(function(){container.classList.remove('user-scrolling')},5000);
     },{passive:true});
-    marquee.addEventListener('scroll',function(){
-      marquee.classList.add('user-scrolling');
+    container.addEventListener('scroll',function(){
+      container.classList.add('user-scrolling');
       clearTimeout(timeout);
-      timeout=setTimeout(function(){marquee.classList.remove('user-scrolling')},5000);
+      timeout=setTimeout(function(){container.classList.remove('user-scrolling')},5000);
     },{passive:true});
+  }
+  document.querySelectorAll('.testi-marquee').forEach(function(m){
+    m.style.overflowX='auto';m.style.scrollbarWidth='none';
+    wireMarquee(m,'.testi-track');
+  });
+  document.querySelectorAll('.scroll-outer').forEach(function(o){
+    wireMarquee(o,'.scroll-track');
   });
 
   // Force video autoplay + loop

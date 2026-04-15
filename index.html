@@ -130,8 +130,7 @@
     </div>
 
     <div class="scroll-outer">
-      <div class="scroll-track">
-        <div class="g-card">
+      <div class="scroll-track"><div class="g-card">
           <div class="g-thumb" style="background-image:url('Images/mens circle.jpg');background-size:cover;background-position:center">
             <span class="g-tag">Men</span>
             <span class="g-loc"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>London · Mondays</span>
@@ -319,15 +318,17 @@
   <section class="section" style="padding:80px 0">
     <div class="wrap" style="text-align:center;max-width:600px">
       <span class="eyebrow rev">For hosts</span>
-      <h2 class="h2 rev d1">Host a gathering.<br>Earn doing what you love.</h2>
-      <p class="body-lg rev d2" style="margin:16px auto 12px;max-width:440px">You design the experience. You set the price. You keep 100% of ticket sales. We handle the rest.</p>
-      <p class="rev d2" style="color:var(--ink-3);margin-bottom:32px">8 attendees × $20/week = <strong style="color:var(--ink)">$625/month</strong></p>
-      <div class="rev d3" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-        <button class="btn-dark" onclick="goPage('host')">
+      <h2 class="h2 rev d1" style="margin-bottom:28px">Host a gathering.<br>Earn doing what you love.</h2>
+      <div class="rev d2 earnings-card">
+        <div class="earnings-math">8 attendees × $20/week</div>
+        <div class="earnings-amount">$625<span>/month</span></div>
+        <div class="earnings-note">You keep 100%. Gather charges $15/month. Nothing else.</div>
+      </div>
+      <div class="rev d3" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:32px">
+        <button class="btn-red" onclick="goPage('host')">
           Learn how it works
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </button>
-        <button class="btn-outline" onclick="navigateTo('/pricing')">Start hosting →</button>
       </div>
     </div>
   </section>
@@ -457,8 +458,7 @@
       </div>
     </div>
     <div class="scroll-outer">
-      <div class="scroll-track">
-        <div class="g-card">
+      <div class="scroll-track"><div class="g-card">
           <div class="g-thumb" style="background-image:url('Images/mens circle.jpg');background-size:cover;background-position:center">
             <span class="g-tag">Men</span>
             <span class="g-loc"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>London · Mondays</span>
@@ -467,28 +467,6 @@
             <div class="g-name">Conscious Men's Circle</div>
             <div class="g-desc">A weekly circle for men who want more depth than most male friendships allow. Opening round, a theme, honest conversation. No performance required. Just men actually talking to each other.</div>
             <div class="g-foot"><span class="g-spots" >Weekly · recurring</span><span class="g-price">$10 / week</span></div>
-          </div>
-        </div>
-        <div class="g-card">
-          <div class="g-thumb" style="background-image:url('Images/Hiking.jpg');background-size:cover;background-position:center">
-            <span class="g-tag">Outdoors</span>
-            <span class="g-loc"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>New York · Saturdays</span>
-          </div>
-          <div class="g-body">
-            <div class="g-name">Weekend Hiking Group</div>
-            <div class="g-desc">A weekly hike within two hours of the city. Different trail every week, same group of people who've realised the best conversations happen when you're moving. All fitness levels.</div>
-            <div class="g-foot"><span class="g-spots" >Weekly · recurring</span><span class="g-price">$5 / week</span></div>
-          </div>
-        </div>
-        <div class="g-card">
-          <div class="g-thumb" style="background-image:url('Images/Volley ball.jpg');background-size:cover;background-position:center">
-            <span class="g-tag">Fitness</span>
-            <span class="g-loc"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>New York · Saturdays</span>
-          </div>
-          <div class="g-body">
-            <div class="g-name">Saturday Volleyball</div>
-            <div class="g-desc">For people who want to move their bodies without it feeling like a chore. Casual beach volleyball every Saturday — all levels, no pressure, just a group of people who'd rather sweat with friends than alone at a gym.</div>
-            <div class="g-foot"><span class="g-spots" >Weekly · recurring</span><span class="g-price">$8 / week</span></div>
           </div>
         </div>
         <div class="g-card">
@@ -514,6 +492,17 @@
           </div>
         </div>
         <div class="g-card">
+          <div class="g-thumb" style="background-image:url('Images/Cuddle puddle.jpg');background-size:cover;background-position:center">
+            <span class="g-tag">Gay Men</span>
+            <span class="g-loc"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>New York · Sundays</span>
+          </div>
+          <div class="g-body">
+            <div class="g-name">Gay Men's Cuddle Puddle</div>
+            <div class="g-desc">For gay men who want non-sexual physical closeness in a consent-forward space. Mattresses, an opening check-in, boundaries respected. Come alone. Leave feeling held.</div>
+            <div class="g-foot"><span class="g-spots" >Weekly · recurring</span><span class="g-price">$20–30 / week</span></div>
+          </div>
+        </div>
+        <div class="g-card">
           <div class="g-thumb" style="background-image:url('Images/Vibe coding.jpg');background-size:cover;background-position:center">
             <span class="g-tag">Builders</span>
             <span class="g-loc"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>New York · Tuesdays</span>
@@ -525,6 +514,17 @@
           </div>
         </div>
         <div class="g-card">
+          <div class="g-thumb" style="background-image:url('Images/Hiking.jpg');background-size:cover;background-position:center">
+            <span class="g-tag">Outdoors</span>
+            <span class="g-loc"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>New York · Saturdays</span>
+          </div>
+          <div class="g-body">
+            <div class="g-name">Weekend Hiking Group</div>
+            <div class="g-desc">A weekly hike within two hours of the city. Different trail every week, same group of people who've realised the best conversations happen when you're moving. All fitness levels.</div>
+            <div class="g-foot"><span class="g-spots" >Weekly · recurring</span><span class="g-price">$5 / week</span></div>
+          </div>
+        </div>
+        <div class="g-card">
           <div class="g-thumb" style="background-image:url('Images/Flower picking.jpg');background-size:cover;background-position:center">
             <span class="g-tag">Non-Binary</span>
             <span class="g-loc"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Brooklyn · Sundays</span>
@@ -533,6 +533,17 @@
             <div class="g-name">Community Garden Collective</div>
             <div class="g-desc">A weekly plot session for non-binary people who want to grow things alongside people who get it. Soil under your nails, seedlings to take home, and the kind of quiet companionship that doesn't need explaining.</div>
             <div class="g-foot"><span class="g-spots" >Weekly · recurring</span><span class="g-price">$10 / week</span></div>
+          </div>
+        </div>
+        <div class="g-card">
+          <div class="g-thumb" style="background-image:url('Images/Volley ball.jpg');background-size:cover;background-position:center">
+            <span class="g-tag">Fitness</span>
+            <span class="g-loc"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>New York · Saturdays</span>
+          </div>
+          <div class="g-body">
+            <div class="g-name">Saturday Volleyball</div>
+            <div class="g-desc">For people who want to move their bodies without it feeling like a chore. Casual beach volleyball every Saturday — all levels, no pressure, just a group of people who'd rather sweat with friends than alone at a gym.</div>
+            <div class="g-foot"><span class="g-spots" >Weekly · recurring</span><span class="g-price">$8 / week</span></div>
           </div>
         </div>
         <div class="g-card">
@@ -566,17 +577,6 @@
             <div class="g-name">Queer Dads</div>
             <div class="g-desc">For gay and queer fathers raising young children. The park visits, the school stuff, the particular joy and particular exhaustion of it. A weekly gathering for dads who want other dads who understand.</div>
             <div class="g-foot"><span class="g-spots" >Weekly · recurring</span><span class="g-price">Free</span></div>
-          </div>
-        </div>
-        <div class="g-card">
-          <div class="g-thumb" style="background-image:url('Images/Cuddle puddle.jpg');background-size:cover;background-position:center">
-            <span class="g-tag">Gay Men</span>
-            <span class="g-loc"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>New York · Sundays</span>
-          </div>
-          <div class="g-body">
-            <div class="g-name">Gay Men's Cuddle Puddle</div>
-            <div class="g-desc">For gay men who want non-sexual physical closeness in a consent-forward space. Mattresses, an opening check-in, boundaries respected. Come alone. Leave feeling held.</div>
-            <div class="g-foot"><span class="g-spots" >Weekly · recurring</span><span class="g-price">$20–30 / week</span></div>
           </div>
         </div>
 
@@ -880,8 +880,7 @@
         </div>
       </div>
       <div class="scroll-outer">
-      <div class="scroll-track">
-        <div class="g-card">
+      <div class="scroll-track"><div class="g-card">
           <div class="g-thumb" style="background-image:url('Images/mens circle.jpg');background-size:cover;background-position:center">
             <span class="g-tag">Men</span>
             <span class="g-loc"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>London · Mondays</span>
@@ -890,39 +889,6 @@
             <div class="g-name">Conscious Men's Circle</div>
             <div class="g-desc">A weekly circle for men who want more depth than most male friendships allow. Opening round, a theme, honest conversation. No performance required. Just men actually talking to each other.</div>
             <div class="g-foot"><span class="g-spots" >Weekly · recurring</span><span class="g-price">$10 / week</span></div>
-          </div>
-        </div>
-        <div class="g-card">
-          <div class="g-thumb" style="background-image:url('Images/Hiking.jpg');background-size:cover;background-position:center">
-            <span class="g-tag">Outdoors</span>
-            <span class="g-loc"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>New York · Saturdays</span>
-          </div>
-          <div class="g-body">
-            <div class="g-name">Weekend Hiking Group</div>
-            <div class="g-desc">A weekly hike within two hours of the city. Different trail every week, same group of people who've realised the best conversations happen when you're moving. All fitness levels.</div>
-            <div class="g-foot"><span class="g-spots" >Weekly · recurring</span><span class="g-price">$5 / week</span></div>
-          </div>
-        </div>
-        <div class="g-card">
-          <div class="g-thumb" style="background-image:url('Images/Volley ball.jpg');background-size:cover;background-position:center">
-            <span class="g-tag">Fitness</span>
-            <span class="g-loc"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>New York · Saturdays</span>
-          </div>
-          <div class="g-body">
-            <div class="g-name">Saturday Volleyball</div>
-            <div class="g-desc">For people who want to move their bodies without it feeling like a chore. Casual beach volleyball every Saturday — all levels, no pressure, just a group of people who'd rather sweat with friends than alone at a gym.</div>
-            <div class="g-foot"><span class="g-spots" >Weekly · recurring</span><span class="g-price">$8 / week</span></div>
-          </div>
-        </div>
-        <div class="g-card">
-          <div class="g-thumb" style="background-image:url('Images/Dancing.jpg');background-size:cover;background-position:center">
-            <span class="g-tag">Embodied &amp; Conscious</span>
-            <span class="g-loc"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>London · Fridays</span>
-          </div>
-          <div class="g-body">
-            <div class="g-name">Contact Improv Partner Dancing</div>
-            <div class="g-desc">For people who live consciously in their bodies — curious, present, open. An hour of contact improv and partner dancing followed by a shared dinner. No experience required. Presence is.</div>
-            <div class="g-foot"><span class="g-spots" >Weekly · recurring</span><span class="g-price">£15 / week</span></div>
           </div>
         </div>
         <div class="g-card">
@@ -948,14 +914,25 @@
           </div>
         </div>
         <div class="g-card">
-          <div class="g-thumb" style="background-image:url('Images/Flower picking.jpg');background-size:cover;background-position:center">
-            <span class="g-tag">Non-Binary</span>
-            <span class="g-loc"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Brooklyn · Sundays</span>
+          <div class="g-thumb" style="background-image:url('Images/Volley ball.jpg');background-size:cover;background-position:center">
+            <span class="g-tag">Fitness</span>
+            <span class="g-loc"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>New York · Saturdays</span>
           </div>
           <div class="g-body">
-            <div class="g-name">Community Garden Collective</div>
-            <div class="g-desc">A weekly plot session for non-binary people who want to grow things alongside people who get it. Soil under your nails, seedlings to take home, and the kind of quiet companionship that doesn't need explaining.</div>
-            <div class="g-foot"><span class="g-spots" >Weekly · recurring</span><span class="g-price">$10 / week</span></div>
+            <div class="g-name">Saturday Volleyball</div>
+            <div class="g-desc">For people who want to move their bodies without it feeling like a chore. Casual beach volleyball every Saturday — all levels, no pressure, just a group of people who'd rather sweat with friends than alone at a gym.</div>
+            <div class="g-foot"><span class="g-spots" >Weekly · recurring</span><span class="g-price">$8 / week</span></div>
+          </div>
+        </div>
+        <div class="g-card">
+          <div class="g-thumb" style="background-image:url('Images/Cuddle puddle.jpg');background-size:cover;background-position:center">
+            <span class="g-tag">Gay Men</span>
+            <span class="g-loc"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>New York · Sundays</span>
+          </div>
+          <div class="g-body">
+            <div class="g-name">Gay Men's Cuddle Puddle</div>
+            <div class="g-desc">For gay men who want non-sexual physical closeness in a consent-forward space. Mattresses, an opening check-in, boundaries respected. Come alone. Leave feeling held.</div>
+            <div class="g-foot"><span class="g-spots" >Weekly · recurring</span><span class="g-price">$20–30 / week</span></div>
           </div>
         </div>
         <div class="g-card">
@@ -967,6 +944,39 @@
             <div class="g-name">Nude Life Drawing Jam</div>
             <div class="g-desc">A weekly life drawing session with a live model. Mixed ages and skill levels — from first-timers to working artists. Sketchpads, charcoal, quiet concentration, and the occasional burst of laughter comparing drawings.</div>
             <div class="g-foot"><span class="g-spots" >Weekly · recurring</span><span class="g-price">$15 / week</span></div>
+          </div>
+        </div>
+        <div class="g-card">
+          <div class="g-thumb" style="background-image:url('Images/Hiking.jpg');background-size:cover;background-position:center">
+            <span class="g-tag">Outdoors</span>
+            <span class="g-loc"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>New York · Saturdays</span>
+          </div>
+          <div class="g-body">
+            <div class="g-name">Weekend Hiking Group</div>
+            <div class="g-desc">A weekly hike within two hours of the city. Different trail every week, same group of people who've realised the best conversations happen when you're moving. All fitness levels.</div>
+            <div class="g-foot"><span class="g-spots" >Weekly · recurring</span><span class="g-price">$5 / week</span></div>
+          </div>
+        </div>
+        <div class="g-card">
+          <div class="g-thumb" style="background-image:url('Images/Dancing.jpg');background-size:cover;background-position:center">
+            <span class="g-tag">Embodied &amp; Conscious</span>
+            <span class="g-loc"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>London · Fridays</span>
+          </div>
+          <div class="g-body">
+            <div class="g-name">Contact Improv Partner Dancing</div>
+            <div class="g-desc">For people who live consciously in their bodies — curious, present, open. An hour of contact improv and partner dancing followed by a shared dinner. No experience required. Presence is.</div>
+            <div class="g-foot"><span class="g-spots" >Weekly · recurring</span><span class="g-price">£15 / week</span></div>
+          </div>
+        </div>
+        <div class="g-card">
+          <div class="g-thumb" style="background-image:url('Images/Flower picking.jpg');background-size:cover;background-position:center">
+            <span class="g-tag">Non-Binary</span>
+            <span class="g-loc"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Brooklyn · Sundays</span>
+          </div>
+          <div class="g-body">
+            <div class="g-name">Community Garden Collective</div>
+            <div class="g-desc">A weekly plot session for non-binary people who want to grow things alongside people who get it. Soil under your nails, seedlings to take home, and the kind of quiet companionship that doesn't need explaining.</div>
+            <div class="g-foot"><span class="g-spots" >Weekly · recurring</span><span class="g-price">$10 / week</span></div>
           </div>
         </div>
         <div class="g-card">
@@ -989,17 +999,6 @@
             <div class="g-name">Queer Dads</div>
             <div class="g-desc">For gay and queer fathers raising young children. The park visits, the school stuff, the particular joy and particular exhaustion of it. A weekly gathering for dads who want other dads who understand.</div>
             <div class="g-foot"><span class="g-spots" >Weekly · recurring</span><span class="g-price">Free</span></div>
-          </div>
-        </div>
-        <div class="g-card">
-          <div class="g-thumb" style="background-image:url('Images/Cuddle puddle.jpg');background-size:cover;background-position:center">
-            <span class="g-tag">Gay Men</span>
-            <span class="g-loc"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>New York · Sundays</span>
-          </div>
-          <div class="g-body">
-            <div class="g-name">Gay Men's Cuddle Puddle</div>
-            <div class="g-desc">For gay men who want non-sexual physical closeness in a consent-forward space. Mattresses, an opening check-in, boundaries respected. Come alone. Leave feeling held.</div>
-            <div class="g-foot"><span class="g-spots" >Weekly · recurring</span><span class="g-price">$20–30 / week</span></div>
           </div>
         </div>
 

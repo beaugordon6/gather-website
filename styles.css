@@ -566,9 +566,33 @@ a,button{transition:opacity .2s,color .2s,background .2s,transform .2s,box-shado
 .btn-white:hover{background:var(--off);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.25)}
 
 /* ── FOOTER CTA ───────────────────────────────── */
-.fcta{padding:140px 36px;text-align:center}
-.fcta .h2{margin-bottom:14px}
-.fcta .body-lg{margin:0 auto 44px;max-width:400px}
+/* ── EARNINGS CARD ── */
+.earnings-card{
+  background:var(--ink);border-radius:var(--r-xl);
+  padding:32px 28px;color:var(--white);
+  max-width:360px;margin:0 auto;
+}
+.earnings-math{
+  font-size:13px;color:rgba(255,255,255,.4);
+  letter-spacing:.02em;margin-bottom:8px;
+}
+.earnings-amount{
+  font-size:clamp(48px,12vw,64px);font-weight:700;
+  letter-spacing:-.04em;line-height:1;
+  margin-bottom:12px;
+}
+.earnings-amount span{
+  font-size:18px;font-weight:400;color:rgba(255,255,255,.5);
+}
+.earnings-note{
+  font-size:13px;color:rgba(255,255,255,.35);line-height:1.5;
+}
+
+/* ── FOOTER CTA ── */
+.fcta{padding:100px 36px;text-align:center;background:var(--ink);color:var(--white)}
+.fcta .eyebrow{color:var(--red)}
+.fcta .h2{margin-bottom:14px;color:var(--white)}
+.fcta .body-lg{margin:0 auto 44px;max-width:400px;color:rgba(255,255,255,.5)}
 .fcta .store-row{justify-content:center}
 
 /* ── FOOTER ───────────────────────────────────── */

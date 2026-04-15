@@ -73,6 +73,25 @@ document.addEventListener('DOMContentLoaded',()=>{
     track.innerHTML=cards+cards;
   });
 
+  // Allow manual scroll to override auto-scroll on testimonial carousels
+  document.querySelectorAll('.testi-marquee').forEach(function(marquee){
+    var timeout;
+    marquee.style.overflowX='auto';
+    marquee.style.scrollbarWidth='none';
+    marquee.addEventListener('touchstart',function(){
+      marquee.classList.add('user-scrolling');
+      clearTimeout(timeout);
+    },{passive:true});
+    marquee.addEventListener('touchend',function(){
+      timeout=setTimeout(function(){marquee.classList.remove('user-scrolling')},5000);
+    },{passive:true});
+    marquee.addEventListener('scroll',function(){
+      marquee.classList.add('user-scrolling');
+      clearTimeout(timeout);
+      timeout=setTimeout(function(){marquee.classList.remove('user-scrolling')},5000);
+    },{passive:true});
+  });
+
   // Force video autoplay + loop
   function forcePlay(){
     document.querySelectorAll('.hero-video').forEach(function(v){

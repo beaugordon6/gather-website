@@ -490,6 +490,7 @@ a,button{transition:opacity .2s,color .2s,background .2s,transform .2s,box-shado
   width:max-content;
 }
 .testi-track:hover{animation-play-state:paused}
+.testi-marquee.user-scrolling .testi-track{animation:none}
 @keyframes testiScroll{
   0%{transform:translateX(0)}
   100%{transform:translateX(-50%)}
@@ -589,10 +590,9 @@ a,button{transition:opacity .2s,color .2s,background .2s,transform .2s,box-shado
 }
 
 /* ── FOOTER CTA ── */
-.fcta{padding:100px 36px;text-align:center;background:var(--ink);color:var(--white)}
-.fcta .eyebrow{color:var(--red)}
-.fcta .h2{margin-bottom:14px;color:var(--white)}
-.fcta .body-lg{margin:0 auto 44px;max-width:400px;color:rgba(255,255,255,.5)}
+.fcta{padding:100px 36px;text-align:center;background:var(--off)}
+.fcta .h2{margin-bottom:14px}
+.fcta .body-lg{margin:0 auto 44px;max-width:400px}
 .fcta .store-row{justify-content:center}
 
 /* ── FOOTER ───────────────────────────────────── */
@@ -651,6 +651,7 @@ footer{
 .pillars{
   display:grid;grid-template-columns:1fr 1fr;
   gap:14px;margin-top:48px;
+  padding-top:4px;
 }
 .pillars-4col{grid-template-columns:repeat(4,1fr)}
 @media(max-width:700px){

@@ -715,50 +715,94 @@ footer{
   .pillars{grid-template-columns:1fr 1fr !important}
 }
 @media(max-width:680px){
+  /* ── MOBILE LAYOUT ── */
   .wrap,.hero,.host-hero,.host-band,.fcta,.hfcta{padding-left:20px;padding-right:20px}
   .scroll-outer,.cards-footer{padding-left:20px;padding-right:20px}
+  .hex-grid,.sup-grid{grid-template-columns:1fr}
+  .hfcta-btns{flex-direction:column;align-items:center}
+
+  /* ── MOBILE NAV ── */
   .nav{padding:0 16px;gap:6px}
   .nav-logo svg{height:24px !important;width:auto !important}
   .nav-host{font-size:11px;padding:7px 12px}
   .nav-download{font-size:11px;padding:7px 12px}
-  .hex-grid,.sup-grid{grid-template-columns:1fr}
-  .hfcta-btns{flex-direction:column;align-items:center}
 
-  /* ── MOBILE TYPE SCALE ── */
+  /* ══════════════════════════════════════
+     MOBILE TYPE SCALE — Single source of truth
+     ──────────────────────────────────────
+     Display:    clamp(34px, 9vw, 48px)
+     Section h2: clamp(24px, 6vw, 32px)
+     Card head:  15px bold
+     Body:       14px
+     Card body:  13px
+     Small/meta: 12px
+     Eyebrow:    10px
+  ══════════════════════════════════════ */
   .h1{font-size:clamp(34px,9vw,48px);letter-spacing:-.035em}
   .h2{font-size:clamp(24px,6vw,32px)}
-  .body-lg{font-size:16px;line-height:1.6}
+  .h3{font-size:15px}
+  .body-lg{font-size:15px;line-height:1.6}
+  .body{font-size:14px}
+  .small{font-size:12px}
   .eyebrow{font-size:10px;margin-bottom:10px}
+
+  /* All card headings — 15px on mobile */
+  .g-name,.p-h,.sup-h,.hex-name,.s-h{font-size:15px !important}
+
+  /* All card/section body copy — 13px on mobile */
+  .g-desc,.p-b,.sup-p,.hex-desc,.s-p,.build-body{font-size:13px !important;line-height:1.55 !important}
+
+  /* Testimonial quotes */
+  .t-q{font-size:14px !important}
+  .ht-q{font-size:14px !important}
+  .t-q::before{font-size:22px}
+
+  /* FAQ */
+  .faq-q{font-size:15px}
+  .faq-a{font-size:13px}
+
+  /* All meta/small text — 12px on mobile */
+  .g-spots,.g-price,.t-name,.t-loc,.proof-txt,.guarantee-line,.f-links a,.f-copy{font-size:12px !important}
+  .hb-body,.hb-fine{font-size:14px !important}
+
+  /* All inline body text — override to 14px */
+  [style*="font-size:16px"]{font-size:14px !important}
+  [style*="font-size:17px"]{font-size:14px !important}
+  [style*="font-size:15px"]{font-size:14px !important}
+  [style*="font-size:18px"]{font-size:15px !important}
+  [style*="font-size:20px"]{font-size:16px !important}
+  [style*="font-size:22px"]{font-size:18px !important}
+  [style*="font-size:24px"]{font-size:20px !important}
+
+  /* Protect buttons from inline override */
+  .btn-red[style],.btn-dark[style],.btn-outline[style]{font-size:14px !important}
+  input[style]{font-size:14px !important}
+
+  /* ── MOBILE HERO ── */
+  .host-sub{font-size:14px !important}
   .store-row{gap:8px}
   .store-btn{padding:10px 16px}
   .s-big{font-size:13px}
   .s-small{font-size:8px}
   .s-icon{width:16px;height:16px}
-  .guarantee-line{font-size:12px}
   .hero-proof{flex-direction:column;gap:4px;margin-top:16px}
-  .proof-txt{text-align:center;font-size:12px}
+  .proof-txt{text-align:center}
 
-  /* ── HOST HERO ── */
-  .host-sub{font-size:15px !important}
-
-  /* ── BEAU NOTE ── */
-  .beau-note{grid-template-columns:44px 1fr !important;gap:16px !important}
-  .beau-note p[style*="font-size:17px"]{font-size:15px !important;line-height:1.6 !important}
-  .beau-note svg{width:44px !important;height:44px !important}
-
-  /* ── SECTIONS ── */
-  .section{padding:64px 0}
+  /* ── MOBILE SECTIONS ── */
+  .section{padding:72px 0}
   .section-header .h2{margin-bottom:8px}
   .gather-section{padding:64px 0}
-  .testi-section{padding:64px 0}
+  .fcta,.hfcta{padding:80px 20px}
 
-  /* ── BUTTONS ── */
+  /* ── MOBILE BEAU NOTE ── */
+  .beau-note{grid-template-columns:44px 1fr !important;gap:16px !important}
+  .beau-note p{font-size:14px !important;line-height:1.6 !important}
+  .beau-note img{width:44px !important;height:44px !important}
+
+  /* ── MOBILE BUTTONS ── */
   .btn-red,.btn-dark,.btn-outline{font-size:14px;padding:12px 22px}
 
-  /* ── FAQ ── */
-  .faq-q{font-size:15px}
-
-  /* ── FOOTER ── */
+  /* ── MOBILE FOOTER ── */
   footer{padding:24px 20px;flex-direction:column;align-items:flex-start;gap:12px}
 }
 

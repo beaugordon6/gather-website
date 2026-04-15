@@ -67,21 +67,33 @@ document.addEventListener('DOMContentLoaded',()=>{
   setTimeout(runReveal,80);
   updateNav();
 
-  // Force video autoplay
+  // Duplicate testimonial cards for seamless marquee loop
+  document.querySelectorAll('.testi-track').forEach(function(track){
+    var cards=track.innerHTML;
+    track.innerHTML=cards+cards;
+  });
+
+  // Force video autoplay + loop
   function forcePlay(){
     document.querySelectorAll('.hero-video').forEach(function(v){
       v.muted=true;
       v.defaultMuted=true;
+      v.loop=true;
       v.setAttribute('muted','');
       v.setAttribute('playsinline','');
       v.setAttribute('autoplay','');
+      v.setAttribute('loop','');
       var p=v.play();
       if(p&&p.catch)p.catch(function(){});
     });
   }
   forcePlay();
   setTimeout(forcePlay,500);
-  setTimeout(forcePlay,1500);
+  setTimeout(forcePlay,2000);
+  // Also restart on ended event as fallback
+  document.querySelectorAll('.hero-video').forEach(function(v){
+    v.addEventListener('ended',function(){v.currentTime=0;v.play().catch(function(){});});
+  });
 });
 
 // Retry on any user interaction (Safari/iOS requires gesture)

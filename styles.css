@@ -71,10 +71,10 @@ body{font-family:var(--f);background:var(--white);color:var(--ink);overflow-x:hi
 #page-guest .hero-wrap{min-height:100vh}
 
 /* ── REVEAL ───────────────────────────────────── */
-.rev{opacity:0;transform:translateY(22px);transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1)}
+.rev{opacity:0;transform:translateY(22px);filter:blur(4px);transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1),filter .6s cubic-bezier(.22,1,.36,1)}
 .rev.d1{transition-delay:.07s}.rev.d2{transition-delay:.14s}
 .rev.d3{transition-delay:.21s}.rev.d4{transition-delay:.28s}
-.rev.in{opacity:1;transform:none}
+.rev.in{opacity:1;transform:none;filter:blur(0)}
 
 /* ── LAYOUT ───────────────────────────────────── */
 .wrap{max-width:1160px;margin:0 auto;padding:0 36px}
@@ -423,39 +423,39 @@ body{font-family:var(--f);background:var(--white);color:var(--ink);overflow-x:hi
 }
 .link-underline:hover{color:var(--red);border-color:var(--red)}
 
-/* ── TESTIMONIALS ─────────────────────────────── */
-.testi-section{padding:100px 0;background:var(--off)}
-.testi-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  gap:16px;margin-top:48px;
+/* ── TESTIMONIALS — auto-scrolling carousel ──── */
+.testi-marquee{
+  overflow:hidden;
+  padding:0 0 20px;
+  mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);
+}
+.testi-track{
+  display:flex;gap:16px;
+  animation:testiScroll 35s linear infinite;
+  width:max-content;
+}
+.testi-track:hover{animation-play-state:paused}
+@keyframes testiScroll{
+  0%{transform:translateX(0)}
+  100%{transform:translateX(-50%)}
 }
 .t-card{
+  width:320px;flex-shrink:0;
   background:var(--white);border:1px solid var(--border);
-  border-radius:var(--r-xl);padding:32px;
+  border-radius:var(--r-xl);padding:28px;
   display:flex;flex-direction:column;
 }
-.t-card.dark{background:var(--ink);border-color:transparent}
 .t-q{
-  font-size:17px;font-style:italic;font-weight:400;
-  line-height:1.65;color:var(--ink);flex:1;margin-bottom:22px;
+  font-size:15px;font-style:italic;font-weight:400;
+  line-height:1.6;color:var(--ink);flex:1;margin-bottom:18px;
 }
-.t-card.dark .t-q{color:rgba(255,255,255,.88)}
 .t-auth{
   display:flex;align-items:center;gap:10px;
-  padding-top:18px;border-top:1px solid var(--border);
+  padding-top:14px;border-top:1px solid var(--border);
 }
-.t-card.dark .t-auth{border-top-color:rgba(255,255,255,.1)}
-.t-av{
-  width:36px;height:36px;border-radius:50%;flex-shrink:0;
-  background:var(--off);
-  font-size:11px;font-weight:700;color:var(--ink-2);
-  display:flex;align-items:center;justify-content:center;
-}
-.t-card.dark .t-av{background:rgba(255,255,255,.1);color:rgba(255,255,255,.6)}
-.t-name{font-size:14px;font-weight:700;color:var(--ink)}
+.t-name{font-size:13px;font-weight:700;color:var(--ink)}
 .t-loc{font-size:12px;color:var(--ink-3)}
-.t-card.dark .t-name{color:var(--white)}
-.t-card.dark .t-loc{color:rgba(255,255,255,.38)}
 
 /* ── HOST CTA BAND ────────────────────────────── */
 .host-band{padding:80px 36px}

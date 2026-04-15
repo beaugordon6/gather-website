@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gather — Brand Direction Options</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,600;0,700;1,700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Instrument Sans',system-ui,sans-serif;background:#FAFAF8;color:#111110;line-height:1.55}
+
+.header{
+  text-align:center;padding:80px 24px 60px;
+  max-width:640px;margin:0 auto;
+}
+.header h1{font-size:clamp(28px,5vw,42px);font-weight:700;letter-spacing:-.03em;margin-bottom:12px}
+.header p{font-size:16px;color:#4A4A46;line-height:1.65}
+
+.direction{
+  max-width:900px;margin:0 auto 80px;padding:0 24px;
+}
+.dir-label{
+  font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  margin-bottom:24px;color:#97968F;
+}
+.dir-card{
+  border-radius:24px;overflow:hidden;
+  border:1px solid #E6E5E1;
+  background:#fff;
+}
+.dir-hero{
+  padding:56px 48px;
+  position:relative;overflow:hidden;
+}
+.dir-hero h2{
+  font-size:clamp(32px,5vw,48px);font-weight:700;letter-spacing:-.04em;
+  line-height:1.05;margin-bottom:12px;position:relative;z-index:1;
+}
+.dir-hero h2 em{font-style:italic}
+.dir-hero p{font-size:16px;line-height:1.6;max-width:400px;position:relative;z-index:1}
+.dir-body{padding:36px 48px 48px}
+.dir-row{display:flex;gap:24px;flex-wrap:wrap;margin-bottom:32px}
+.dir-swatch{
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+}
+.swatch{width:56px;height:56px;border-radius:14px;border:1px solid rgba(0,0,0,.06)}
+.swatch-name{font-size:11px;color:#97968F}
+.dir-gradient{
+  height:48px;border-radius:14px;margin-bottom:24px;
+}
+.dir-desc{font-size:15px;color:#4A4A46;line-height:1.7;margin-bottom:24px}
+.dir-elements{
+  display:flex;gap:12px;flex-wrap:wrap;align-items:center;
+}
+.sample-btn{
+  display:inline-flex;align-items:center;gap:6px;
+  font-family:inherit;font-size:14px;font-weight:700;
+  padding:12px 24px;border-radius:999px;border:none;
+  cursor:pointer;color:#fff;
+}
+.sample-tag{
+  display:inline-block;
+  font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  padding:5px 12px;border-radius:999px;
+}
+.sample-pill{
+  font-size:13px;font-weight:600;
+  padding:7px 16px;border-radius:999px;
+  border:1.5px solid;
+}
+.dir-mood{
+  font-size:13px;color:#97968F;font-style:italic;
+  padding-top:20px;border-top:1px solid #E6E5E1;
+}
+
+/* Direction A: Warm Sunset */
+.dir-a .dir-hero{background:linear-gradient(135deg,#FFF5EC 0%,#FFE8D6 50%,#FFDDC1 100%)}
+.dir-a .dir-hero h2{color:#111110}
+.dir-a .dir-hero p{color:#4A4A46}
+.dir-a .dir-gradient{background:linear-gradient(90deg,#E84530,#F47B3A,#F4A533,#E8C547)}
+.dir-a .sample-btn{background:linear-gradient(135deg,#E84530,#F47B3A)}
+.dir-a .sample-tag{background:rgba(232,69,48,.08);color:#E84530}
+.dir-a .sample-pill{border-color:#F4A533;color:#F4A533}
+
+/* Direction B: Electric Community */
+.dir-b .dir-hero{background:linear-gradient(135deg,#F5F0FF 0%,#EDE5FF 50%,#F0E0F8 100%)}
+.dir-b .dir-hero h2{color:#111110}
+.dir-b .dir-hero p{color:#4A4A46}
+.dir-b .dir-gradient{background:linear-gradient(90deg,#E84530,#D63384,#8B3FC7,#6C5CE7)}
+.dir-b .sample-btn{background:linear-gradient(135deg,#E84530,#D63384)}
+.dir-b .sample-tag{background:rgba(214,51,132,.08);color:#D63384}
+.dir-b .sample-pill{border-color:#8B3FC7;color:#8B3FC7}
+
+/* Direction C: Earth & Light */
+.dir-c .dir-hero{background:linear-gradient(135deg,#F0F5EC 0%,#E0ECE4 50%,#D8E8E0 100%)}
+.dir-c .dir-hero h2{color:#111110}
+.dir-c .dir-hero p{color:#4A4A46}
+.dir-c .dir-gradient{background:linear-gradient(90deg,#2D6A4F,#40916C,#52B788,#B7E4C7)}
+.dir-c .sample-btn{background:linear-gradient(135deg,#2D6A4F,#40916C)}
+.dir-c .sample-tag{background:rgba(45,106,79,.08);color:#2D6A4F}
+.dir-c .sample-pill{border-color:#40916C;color:#40916C}
+
+/* Direction D: Minimal Luxe */
+.dir-d .dir-hero{background:#111110}
+.dir-d .dir-hero h2{color:#fff}
+.dir-d .dir-hero p{color:rgba(255,255,255,.6)}
+.dir-d .dir-gradient{background:linear-gradient(90deg,#111110,#333330,#E84530,#111110)}
+.dir-d .sample-btn{background:#E84530}
+.dir-d .sample-tag{background:rgba(232,69,48,.08);color:#E84530}
+.dir-d .sample-pill{border-color:#CCCBC6;color:#4A4A46}
+
+@media(max-width:600px){
+  .dir-hero{padding:40px 28px}
+  .dir-body{padding:28px}
+  .dir-row{gap:16px}
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Brand Directions for Gather</h1>
+  <p>Four concepts for how the brand could look and feel. Each keeps the Gather red as an anchor but takes the identity in a different direction. Pick the one that resonates and we'll incorporate it across the site.</p>
+</div>
+
+<!-- DIRECTION A -->
+<div class="direction dir-a">
+  <div class="dir-label">Direction A</div>
+  <div class="dir-card">
+    <div class="dir-hero">
+      <h2>Warm Sunset</h2>
+      <p>Organic, inviting, like golden hour at a gathering. Feels like the warmth of being welcomed somewhere.</p>
+    </div>
+    <div class="dir-body">
+      <div class="dir-row">
+        <div class="dir-swatch"><div class="swatch" style="background:#E84530"></div><div class="swatch-name">Gather Red</div></div>
+        <div class="dir-swatch"><div class="swatch" style="background:#F47B3A"></div><div class="swatch-name">Amber</div></div>
+        <div class="dir-swatch"><div class="swatch" style="background:#F4A533"></div><div class="swatch-name">Gold</div></div>
+        <div class="dir-swatch"><div class="swatch" style="background:#E8C547"></div><div class="swatch-name">Honey</div></div>
+        <div class="dir-swatch"><div class="swatch" style="background:#FFF5EC"></div><div class="swatch-name">Cream</div></div>
+      </div>
+      <div class="dir-gradient"></div>
+      <div class="dir-desc">A warm gradient that flows from Gather's signature red through amber and gold. Applied to accent elements, section dividers, and CTAs. The overall palette feels like a sunset — inviting, communal, optimistic. Typography stays clean and modern but the color story says "come as you are."</div>
+      <div class="dir-elements">
+        <button class="sample-btn">Download the app</button>
+        <span class="sample-tag">Gay Men</span>
+        <span class="sample-pill">London · Sundays</span>
+      </div>
+      <p class="dir-mood">Mood: Airbnb meets sunset yoga retreat. Approachable luxury.</p>
+    </div>
+  </div>
+</div>
+
+<!-- DIRECTION B -->
+<div class="direction dir-b">
+  <div class="dir-label">Direction B</div>
+  <div class="dir-card">
+    <div class="dir-hero">
+      <h2>Electric Community</h2>
+      <p>Vibrant, alive, energetic. The feeling of a room full of people who are all genuinely happy to be there.</p>
+    </div>
+    <div class="dir-body">
+      <div class="dir-row">
+        <div class="dir-swatch"><div class="swatch" style="background:#E84530"></div><div class="swatch-name">Gather Red</div></div>
+        <div class="dir-swatch"><div class="swatch" style="background:#D63384"></div><div class="swatch-name">Magenta</div></div>
+        <div class="dir-swatch"><div class="swatch" style="background:#8B3FC7"></div><div class="swatch-name">Violet</div></div>
+        <div class="dir-swatch"><div class="swatch" style="background:#6C5CE7"></div><div class="swatch-name">Indigo</div></div>
+        <div class="dir-swatch"><div class="swatch" style="background:#F5F0FF"></div><div class="swatch-name">Lavender</div></div>
+      </div>
+      <div class="dir-gradient"></div>
+      <div class="dir-desc">An energetic gradient that sweeps from Gather red through magenta and violet. Bold, expressive, youthful — but still refined. This direction leans into the idea that Gather is for people who want more from their social life. Not quiet desperation — active, joyful intention. The gradient could animate subtly on key sections.</div>
+      <div class="dir-elements">
+        <button class="sample-btn">Download the app</button>
+        <span class="sample-tag">Queer Women</span>
+        <span class="sample-pill">Brooklyn · Sundays</span>
+      </div>
+      <p class="dir-mood">Mood: Spotify Wrapped meets Instagram Stories. Fun, expressive, unmistakably modern.</p>
+    </div>
+  </div>
+</div>
+
+<!-- DIRECTION C -->
+<div class="direction dir-c">
+  <div class="dir-label">Direction C</div>
+  <div class="dir-card">
+    <div class="dir-hero">
+      <h2>Earth & Light</h2>
+      <p>Grounded, intentional, like a community garden. Depth without heaviness, nature without cliche.</p>
+    </div>
+    <div class="dir-body">
+      <div class="dir-row">
+        <div class="dir-swatch"><div class="swatch" style="background:#2D6A4F"></div><div class="swatch-name">Forest</div></div>
+        <div class="dir-swatch"><div class="swatch" style="background:#40916C"></div><div class="swatch-name">Sage</div></div>
+        <div class="dir-swatch"><div class="swatch" style="background:#52B788"></div><div class="swatch-name">Mint</div></div>
+        <div class="dir-swatch"><div class="swatch" style="background:#B7E4C7"></div><div class="swatch-name">Fern</div></div>
+        <div class="dir-swatch"><div class="swatch" style="background:#F0F5EC"></div><div class="swatch-name">Moss</div></div>
+      </div>
+      <div class="dir-gradient"></div>
+      <div class="dir-desc">A nature-inspired palette grounded in forest greens and sage. Gather's red becomes the accent that pops against the calm — like a campfire in the woods. This direction communicates depth, authenticity, and the idea that real connection is an organic thing that grows over time. Elevated but not sterile.</div>
+      <div class="dir-elements">
+        <button class="sample-btn">Download the app</button>
+        <span class="sample-tag">Outdoors</span>
+        <span class="sample-pill">New York · Saturdays</span>
+      </div>
+      <p class="dir-mood">Mood: Patagonia meets Headspace. Calm confidence, rooted in something real.</p>
+    </div>
+  </div>
+</div>
+
+<!-- DIRECTION D -->
+<div class="direction dir-d">
+  <div class="dir-label">Direction D</div>
+  <div class="dir-card">
+    <div class="dir-hero">
+      <h2>Minimal Luxe</h2>
+      <p>Restrained elegance. Let the content and the people do the talking. The brand disappears so the experience shines.</p>
+    </div>
+    <div class="dir-body">
+      <div class="dir-row">
+        <div class="dir-swatch"><div class="swatch" style="background:#111110"></div><div class="swatch-name">Ink</div></div>
+        <div class="dir-swatch"><div class="swatch" style="background:#333330"></div><div class="swatch-name">Charcoal</div></div>
+        <div class="dir-swatch"><div class="swatch" style="background:#E84530"></div><div class="swatch-name">Gather Red</div></div>
+        <div class="dir-swatch"><div class="swatch" style="background:#F6F5F2"></div><div class="swatch-name">Off-white</div></div>
+        <div class="dir-swatch"><div class="swatch" style="background:#FFFFFF;border:1px solid #E6E5E1"></div><div class="swatch-name">White</div></div>
+      </div>
+      <div class="dir-gradient"></div>
+      <div class="dir-desc">Almost monochrome — just Gather red as the single pop of color. Maximum restraint, maximum confidence. This is the Apple approach: the brand is so sure of itself it doesn't need to shout. Typography, whitespace, and photography do the heavy lifting. The gradient is used sparingly — a thin line, a subtle glow — never a splashy background.</div>
+      <div class="dir-elements">
+        <button class="sample-btn">Download the app</button>
+        <span class="sample-tag">Artists</span>
+        <span class="sample-pill">New York · Wednesdays</span>
+      </div>
+      <p class="dir-mood">Mood: Apple.com meets Aesop. Premium restraint. Less is everything.</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

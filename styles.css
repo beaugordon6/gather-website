@@ -70,11 +70,43 @@ body{font-family:var(--f);background:var(--white);color:var(--ink);overflow-x:hi
 #page-guest{padding-top:0}
 #page-guest .hero-wrap{min-height:100vh}
 
-/* ── REVEAL ───────────────────────────────────── */
-.rev{opacity:0;transform:translateY(22px);filter:blur(4px);transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1),filter .6s cubic-bezier(.22,1,.36,1)}
-.rev.d1{transition-delay:.07s}.rev.d2{transition-delay:.14s}
-.rev.d3{transition-delay:.21s}.rev.d4{transition-delay:.28s}
+/* ── REVEAL + MOTION SYSTEM ───────────────────── */
+.rev{opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1),filter .7s cubic-bezier(.22,1,.36,1)}
+.rev.d1{transition-delay:.1s}.rev.d2{transition-delay:.2s}
+.rev.d3{transition-delay:.3s}.rev.d4{transition-delay:.4s}
 .rev.in{opacity:1;transform:none;filter:blur(0)}
+
+/* ── MICRO-INTERACTIONS ── */
+.g-card{transition:transform .4s cubic-bezier(.22,1,.36,1),box-shadow .4s ease}
+.t-card{transition:transform .3s ease}
+.t-card:hover{transform:scale(1.02)}
+.pillar{transition:transform .3s ease,border-color .3s}
+.pillar:hover{transform:translateY(-2px);border-color:var(--border-mid)}
+.sup-card{transition:transform .3s ease,border-color .3s}
+.store-btn{transition:all .3s cubic-bezier(.22,1,.36,1)}
+.btn-dark,.btn-red,.btn-outline{transition:all .3s cubic-bezier(.22,1,.36,1)}
+a,button{transition:opacity .2s,color .2s,background .2s,transform .2s,box-shadow .2s,border-color .2s}
+
+/* ── ACCENT LINE ANIMATION ── */
+.accent-line{
+  height:2px;
+  background:linear-gradient(90deg,var(--ink),#333330,var(--red),#333330,var(--ink));
+  background-size:200% 100%;
+  animation:accentShimmer 4s ease infinite;
+}
+@keyframes accentShimmer{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+
+/* ── SMOOTH SCROLL INDICATORS ── */
+.scroll-outer{position:relative}
+.scroll-outer::after{
+  content:'';position:absolute;top:0;right:0;bottom:0;width:40px;
+  background:linear-gradient(to right,transparent,var(--white));
+  pointer-events:none;z-index:2;
+}
 
 /* ── LAYOUT ───────────────────────────────────── */
 .wrap{max-width:1160px;margin:0 auto;padding:0 36px}
@@ -236,17 +268,32 @@ body{font-family:var(--f);background:var(--white);color:var(--ink);overflow-x:hi
     font-size:clamp(34px,9vw,48px);
   }
   .hero-h1 em{color:var(--white)}
+  .hero-glass{
+    background:rgba(255,255,255,.1);
+    backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+    border:1px solid rgba(255,255,255,.18);
+    border-radius:var(--r-xl);
+    padding:20px;
+    text-align:center;
+  }
   .hero-sub{
-    font-size:16px;font-weight:400;line-height:1.55;
-    color:rgba(255,255,255,.95) !important;
-    max-width:480px;margin:0 auto 20px;
-    background:rgba(255,255,255,.12);
-    backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
-    border:1px solid rgba(255,255,255,.2);
-    border-radius:var(--r-lg);
-    padding:14px 18px;
+    font-size:14px;font-weight:400;line-height:1.55;
+    color:rgba(255,255,255,.9) !important;
+    max-width:480px;margin:0 auto 16px;
+    background:none;backdrop-filter:none;border:none;border-radius:0;padding:0;
     text-shadow:0 1px 8px rgba(0,0,0,.2);
   }
+  .hero-stores{justify-content:center}
+  .hero-stores .store-btn{
+    background:rgba(255,255,255,.95);color:var(--ink);
+    border:none;padding:10px 16px;border-radius:var(--r);
+  }
+  .hero-stores .store-btn .s-icon{fill:var(--ink)}
+}
+/* Desktop hero stores */
+@media(min-width:769px){
+  .hero-glass{max-width:440px}
+  .hero-sub{margin:0 0 20px}
 }
 .hero-stores{display:inline-flex;gap:10px}
 .hero-stores .store-btn{
@@ -255,7 +302,7 @@ body{font-family:var(--f);background:var(--white);color:var(--ink);overflow-x:hi
   box-shadow:0 2px 16px rgba(0,0,0,.15);
 }
 .hero-stores .store-btn .s-icon{fill:var(--ink)}
-.hero-stores .store-btn:hover{transform:translateY(-1px);box-shadow:0 4px 20px rgba(0,0,0,.2)}
+.hero-stores .store-btn:hover{box-shadow:0 4px 20px rgba(0,0,0,.2)}
 .hero-scroll-hint{
   margin-top:16px;
   color:rgba(255,255,255,.5);

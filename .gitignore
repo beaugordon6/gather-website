@@ -1,0 +1,21 @@
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Editor/IDE
+.vscode/
+.idea/
+
+# Local dev
+.claude/
+
+# Video backups and working files
+Images/hero-video-original.mp4
+Images/hero-video-original-hd.mp4
+Images/hero-video-540p.mp4
+Images/hero-video-1080.mp4
+Images/hero-video-*.mp4.bak
+
+# Temporary Python scripts
+*.pyc
+__pycache__/
